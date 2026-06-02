@@ -1,0 +1,101 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.10
+    command:
+      # ---- Core settings ----
+      - "--api.dashboard=true"
+      - "--log.level=INFO"
+      - "--providers.docker=true"
+      - "--providers.docker.swarmMode=true"
+      - "--providers.docker.endpoint=unix:///var/run/docker.sock"
+      - "--providers.docker.exposedbydefault=false"
+
+      # ---- Entrypoints ----
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+
+      # ---- Global HTTP to HTTPS redirect ----
+      - "--entrypoints.web.http.redirections.entryPoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entryPoint.scheme=https"
+      - "--entrypoints.web.http.redirections.entryPoint.permanent=true"
+
+      # ---- Let's Encrypt (ACME) ----
+      - "--certificatesresolvers.myresolver.acme.email=info@aiguaroca.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge=true"
+      - "--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web"
+
+    ports:
+      - "80:80"
+      - "443:443"
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/traefik/letsencrypt:/letsencrypt
+
+    deploy:
+      placement:
+        constraints:
+          - node.role == manager
+      labels:
+        - "traefik.enable=true"
+        # Secure Traefik dashboard (optional)
+        - "traefik.http.routers.traefik.rule=Host(`aiguaroca.com`) && PathPrefix(`/traefik`)"
+        - "traefik.http.routers.traefik.entrypoints=websecure"
+        - "traefik.http.routers.traefik.service=api@internal"
+        - "traefik.http.routers.traefik.tls.certresolver=myresolver"
+        - "traefik.http.middlewares.auth.basicauth.users=admin:oSLHFYJ7hFgJVGvTkaek3j1IoS8="  # admin:admin1122
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    deploy:
+      replicas: 1
+
+  web:
+    image: aig-next:latest
+    deploy:
+      replicas: 2
+      labels:
+        - "traefik.enable=true"
+        # HTTPS routing
+        - "traefik.http.routers.websecure.rule=Host(`aiguaroca.com`,`www.aiguaroca.com`)"
+        - "traefik.http.routers.websecure.entrypoints=websecure"
+        - "traefik.http.routers.websecure.tls=true"
+        - "traefik.http.routers.websecure.tls.certresolver=myresolver"
+        # Optional: www redirect
+        - "traefik.http.middlewares.redirect-to-www.redirectregex.regex=^https?://aiguaroca\\.com(.*)"
+        - "traefik.http.middlewares.redirect-to-www.redirectregex.replacement=https://www.aiguaroca.com$$1"
+        - "traefik.http.routers.websecure.middlewares=redirect-to-www,gzip"
+        # Enable gzip
+        - "traefik.http.middlewares.gzip.compress=true"
+        # If Next.js runs on custom ports
+        - "traefik.http.services.web.loadbalancer.server.port=3000"
+
+  backend:
+    image: aig-backend:latest
+    environment:
+      - PORT=5000
+      - SMTP_HOST=${SMTP_HOST:-smtp.ionos.es}
+      - SMTP_PORT=${SMTP_PORT:-587}
+      - SMTP_SECURE=${SMTP_SECURE:-false}
+      - EMAIL_USER=${EMAIL_USER}
+      - EMAIL_PASS=${EMAIL_PASS}
+      - ADMIN_EMAIL=${ADMIN_EMAIL:-info@aiguaroca.com}
+      - EMAIL_FROM=${EMAIL_FROM:-Aiguaroca <info@aiguaroca.com>}
+    deploy:
+      replicas: 2
+      labels:
+        - "traefik.enable=true"
+        - "traefik.http.routers.backend.rule=(Host(`aiguaroca.com`,`www.aiguaroca.com`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`)))"
+        - "traefik.http.routers.backend.entrypoints=websecure"
+        - "traefik.http.routers.backend.tls.certresolver=myresolver"
+        - "traefik.http.services.backend.loadbalancer.server.port=5000"
+        - "traefik.http.services.backend.loadbalancer.sticky.cookie=true"
+
+volumes:
+  redis-data:

@@ -1,0 +1,255 @@
+@import "tailwindcss";
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+* {
+  font-family: 'Rubik', sans-serif;
+}
+
+@theme {
+  --font-family-sans: 'Rubik', ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  
+  --color-neutral-100: #f1f1f1;
+  --color-neutral-200: #eaeaea;
+  --color-neutral-300: #d2d2d2;
+  --color-neutral-400: #bdbdbd;
+  --color-neutral-500: #a6a6a6;
+  --color-neutral-600: #8d8d8d;
+  --color-neutral-700: #777777;
+  --color-neutral-800: #606060;
+  --color-neutral-900: #4b4b4b;
+  --color-neutral-1000: #333333;
+
+  --color-brand-100: #f2faff;
+  --color-brand-200: #c3e3ff;
+  --color-brand-300: #00c0fc;
+  --color-brand-400: #007bb6;
+  --color-brand-500: #004d67;
+  --color-brand-10: #a0c6dc;
+  --color-brand-50: #a0c6dc;
+
+  --color-footer: #242424;
+}
+
+@layer components {
+  .space-between {
+    @apply flex items-center justify-between;
+  }
+
+  .align-center {
+    @apply flex items-center;
+  }
+
+  .center {
+    @apply flex items-center justify-center;
+  }
+
+  .button {
+    @apply bg-black cursor-pointer rounded-xl text-white disabled:opacity-80 disabled:cursor-not-allowed;
+  }
+
+  .news-header-container {
+    @apply bg-brand-100 px-4 lg:px-24 py-3 relative z-10;
+  }
+
+  .spin {
+    @apply animate-spin;
+  }
+
+  .logo {
+    @apply w-[30dvw] sm:w-[40dvw] lg:w-80 object-contain;
+  }
+
+  .navbar-container {
+    @apply relative z-10 px-4 lg:px-16 py-6 shadow-xl bg-white;
+  }
+
+  .navbar-side-button {
+    @apply cursor-pointer w-10 h-10 rounded-full shadow-md border border-neutral-100;
+  }
+
+  .custom-container {
+    @apply w-full px-5 lg:px-24 max-w-[1550px] mx-auto;
+  }
+
+  .sliding-panel {
+    @apply w-full absolute lg:fixed z-40 transition-all duration-500 ease-in-out;
+  }
+
+  .slider-container {
+    @apply p-0 text-white bg-[#242424] rounded-3xl px-4 lg:px-16 2xl:px-24 lg:py-8 2xl:py-12 relative;
+  }
+
+  .slide {
+    @apply translate-y-0 lg:mt-5;
+  }
+
+  .close {
+    @apply -translate-y-full top-0;
+  }
+
+  .grid-image-overlay {
+    @apply w-full h-full absolute top-0 left-0 bg-gradient-to-b from-black/45 to-transparent;
+  }
+
+  .grid-icon-container {
+    @apply bg-neutral-50 text-neutral-950 rounded-full;
+  }
+
+  .card {
+    @apply bg-[#E6F7FE] select-none rounded-[30px] p-5 min-h-[33em] lg:min-h-[35em] space-y-5 border-2 border-brand-200;
+  }
+
+  .input-container {
+    @apply border border-neutral-300 bg-[#F9FAFB] text-neutral-900 rounded-xl p-3 gap-3;
+  }
+
+  .checkbox-container {
+    @apply rounded-md flex items-center justify-center w-6 h-6 border border-neutral-300 transition-all duration-300 cursor-pointer text-neutral-200;
+  }
+
+  .checked {
+    @apply bg-brand-300 text-black;
+  }
+}
+
+@layer utilities {
+  .highlighted__text {
+    @apply text-brand-400 font-semibold;
+  }
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Rubik", sans-serif;
+}
+
+.swiper-slide {
+  border-radius: 12px;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #00c0fc;
+  border-radius: 6px;
+  border: 3px solid #f1f1f1;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #00c0fc #f1f1f1;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  display: none;
+  -webkit-appearance: none;
+}
+
+input[type="date"] {
+  -moz-appearance: textfield;
+}
+
+input[type="date"]::-ms-clear,
+input[type="date"]::-ms-reveal {
+  display: none;
+}
+
+/* Swiper CSS */
+.swiper {
+  width: 100%;
+  height: 100% !important;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-swiper .swiper-pagination {
+  position: relative !important;
+  margin-top: 20px;
+}
+
+.custom-swiper .swiper-pagination-bullet {
+  background-color: #00c0fc !important;
+}
+
+button {
+  cursor: pointer;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+.swiper-slide-shadow {
+  border-radius: 30px !important;
+}
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #111;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 9999;
+  flex-wrap: wrap;
+}
+
+.cookie-text {
+  max-width: 70%;
+  font-size: 14px;
+}
+
+.cookie-link {
+  text-decoration: underline;
+  color: #4eaaff;
+}
+
+.cookie-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.cookie-banner button {
+  padding: 8px 14px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.cookie-banner .accept {
+  background: #16a34a;
+  color: white;
+}
+
+.cookie-banner .reject {
+  background: #dc2626;
+  color: white;
+}
+
+@media (max-width: 1023px) {
+  body.hide-cookie-icon-mobile #silktide-cookie-icon {
+    display: none !important;
+  }
+}
+
+#whatsapp-floating-button {
+  bottom: 10px !important;
+  right: 10px !important;
+}

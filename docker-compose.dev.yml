@@ -1,0 +1,71 @@
+version: '3.8'
+
+services:
+  traefik:
+    image: traefik:v2.10
+    command:
+      - "--api.dashboard=true"
+      - "--log.level=INFO"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+    ports:
+      - "80:80"        # frontend/backend access via Traefik
+      - "8080:8080"    # dashboard access
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      # Traefik Dashboard
+      - "traefik.http.routers.api.rule=Host(`localhost`) && PathPrefix(`/traefik`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.entrypoints=web"
+      - "traefik.http.middlewares.auth.basicauth.users=admin:oSLHFYJ7hFgJVGvTkaek3j1IoS8="
+      - "traefik.http.routers.api.middlewares=auth"
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--appendonly", "yes"]
+    volumes:
+      - redis-data:/data
+    networks:
+      - app-network
+
+  backend:
+    image: aig-backend:latest
+    environment:
+      - NODE_ENV=development
+      - PORT=5000
+    networks:
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.backend.rule=Host(`localhost`) && (PathPrefix(`/api`) || PathPrefix(`/socket.io`))"
+      - "traefik.http.routers.backend.entrypoints=web"
+      - "traefik.http.services.backend.loadbalancer.server.port=5000"
+
+  web:
+    image: aig-next:latest
+    environment:
+      - NODE_ENV=development
+      - PORT=3000
+      # 👇 Used for internal communication between containers (if needed)
+      - NEXT_PUBLIC_API_BASE=http://backend:5000
+    networks:
+      - app-network
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`localhost`)"
+      - "traefik.http.routers.web.entrypoints=web"
+      - "traefik.http.services.web.loadbalancer.server.port=3000"
+    depends_on:
+      - backend
+      - redis
+
+networks:
+  app-network:
+
+volumes:
+  redis-data:
