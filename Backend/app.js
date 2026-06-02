@@ -83,8 +83,34 @@ const emailLimiter = rateLimit({
 });
 const STATIC_ASSET_CACHE = "public, max-age=31536000, immutable";
 
+function getAssetsDir() {
+  const publicAssets = path.join(__dirname, "public", "api", "v1", "assets");
+  if (fs.existsSync(publicAssets)) {
+    return publicAssets;
+  }
+  return path.join(__dirname, "assets");
+}
+
+const allowedOrigins = new Set([
+  "https://www.aiguaroca.com",
+  "https://aiguaroca.com",
+  "http://localhost:3000",
+]);
+
+function isAllowedOrigin(origin) {
+  if (!origin) return true;
+  if (allowedOrigins.has(origin)) return true;
+  return /^https:\/\/[\w.-]+\.vercel\.app$/.test(origin);
+}
+
 const corsOptions = {
-  origin: ["https://www.aiguaroca.com", "http://localhost:3000"],
+  origin(origin, callback) {
+    if (isAllowedOrigin(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST"],
   allowedHeaders: ["Content-Type"],
 };
@@ -96,7 +122,7 @@ app.use(["/api/v1/send-email", "/api/v1/subscribe", "/api/v1/contact"], emailLim
 
 app.use(
   "/api/v1/assets",
-  express.static(path.join(__dirname, "assets"), {
+  express.static(getAssetsDir(), {
     immutable: true,
     maxAge: "1y",
     setHeaders: (res) => {
@@ -104,6 +130,14 @@ app.use(
     },
   })
 );
+
+app.get("/", (req, res) => {
+  res.redirect(302, "/api/v1/");
+});
+
+app.get("/api/v1", (req, res) => {
+  res.redirect(302, "/api/v1/");
+});
 
 app.get("/api/v1/", (req, res) => {
   res.send("Express server is running!");
@@ -116,7 +150,7 @@ app.get("/api/v1/videos/:videoName", (req, res) => {
     return res.status(400).send("Invalid video name");
   }
 
-  const videosDir = path.resolve(__dirname, "assets", "videos");
+  const videosDir = path.resolve(getAssetsDir(), "videos");
   const videoPath = path.resolve(videosDir, videoName);
 
   if (!videoPath.startsWith(videosDir + path.sep)) {
@@ -343,6 +377,10 @@ app.post("/api/v1/contact", async (req, res) => {
   }
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+module.exports = app;
+
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
+  });
+}

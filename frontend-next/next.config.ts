@@ -47,6 +47,11 @@ const nextConfig: NextConfig = {
         hostname: "www.aiguaroca.com",
         pathname: "/api/v1/**",
       },
+      {
+        protocol: "https",
+        hostname: "*.vercel.app",
+        pathname: "/api/v1/**",
+      },
     ],
     formats: ["image/webp", "image/avif"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
