@@ -52,6 +52,9 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
 }) => {
   const { prefetchRoute } = useRoutePrefetch();
   const primaryImage = img[0];
+  const isLocalAsset =
+    typeof primaryImage === "string" &&
+    primaryImage.startsWith("/api/v1/assets/");
   const titleLimit = inRecommend ? 32 : 48;
   const descriptionLimit = inRecommend ? 88 : 110;
   const displayTitle =
@@ -90,6 +93,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
             loading={priorityImage ? "eager" : "lazy"}
             priority={priorityImage}
             quality={priorityImage ? 90 : 75}
+            unoptimized={isLocalAsset}
           />
         ) : (
           <div className="absolute inset-0 bg-gradient-to-br from-brand-100 to-neutral-100" />

@@ -30,7 +30,7 @@ export const activitiesData: Activity[] = [
     duration: "2  Horas",
     prize: "40",
     link: routes.rafting.path,
-    images: ["/api/v1/assets/activity/rafting.JPG"],
+    images: ["/api/v1/assets/activity/rafting.jpg"],
   },
   {
     title: "Rafting Tamayo",

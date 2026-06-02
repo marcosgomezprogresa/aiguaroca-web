@@ -38,6 +38,12 @@ const nextConfig: NextConfig = {
 
   // Image optimization for backend images
   images: {
+    localPatterns: [
+      {
+        pathname: "/api/v1/assets/**",
+        search: "",
+      },
+    ],
     remotePatterns: [
       {
         protocol: apiBaseUrl.protocol.replace(":", "") as "http" | "https",
