@@ -1,7 +1,7 @@
 {
   "name": "Aiguaroca - Aventura en Valencia",
   "short_name": "Aiguaroca",
-  "start_url": "https://www.aiguaroca.com/",
+  "start_url": "/",
   "icons": [
     {
       "src": "/android-chrome-192x192.png",

@@ -10,12 +10,20 @@ const apiBaseUrl = new URL(normalizedApiBase);
 const isProduction = process.env.NODE_ENV === "production";
 
 const nextConfig: NextConfig = {
-  // Proxy API calls to backend
+  // Images/videos are in public/ (synced at build). No proxy in production — avoids 502 from API_BASE.
   async rewrites() {
+    if (process.env.VERCEL || isProduction) {
+      return [];
+    }
+    const isLocalApi =
+      apiBaseUrl.hostname === "localhost" || apiBaseUrl.hostname === "127.0.0.1";
+    if (!isLocalApi) {
+      return [];
+    }
     return [
       {
-        source: "/api/:path*",
-        destination: `${normalizedApiBase}/api/:path*`,
+        source: "/api/v1/:path((?!assets/)(?!videos/).*)",
+        destination: `${normalizedApiBase}/api/v1/:path*`,
       },
     ];
   },

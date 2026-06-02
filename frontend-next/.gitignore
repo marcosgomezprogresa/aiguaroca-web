@@ -43,3 +43,7 @@ yarn-error.log*
 next-env.d.ts
 
 .vercel
+
+# synced from Backend/assets at build time
+/public/api/v1/assets
+/public/api/v1/videos
