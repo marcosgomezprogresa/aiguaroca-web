@@ -75,7 +75,7 @@ const nextConfig: NextConfig = {
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     unoptimized: false,
-    qualities: [50, 70, 75, 90],
+    qualities: [50, 70, 75, 85, 90],
   },
 
 

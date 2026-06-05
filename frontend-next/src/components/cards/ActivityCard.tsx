@@ -66,9 +66,6 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
   const [priceTapped, setPriceTapped] = useState(false);
   const tapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const primaryImage = img[0];
-  const isLocalAsset =
-    typeof primaryImage === "string" &&
-    primaryImage.startsWith("/api/v1/assets/");
 
   const seoTitle = formatSeoTitle(title);
   const bookingHref = getActivityBookingHref(title);
@@ -113,14 +110,13 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
               fill
               sizes={
                 inHome
-                  ? "(max-width: 640px) 100vw, (max-width: 1024px) 560px, 960px"
-                  : "(max-width: 640px) 100vw, (max-width: 1024px) 640px, 1080px"
+                  ? "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 640px"
+                  : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 720px"
               }
               className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
               loading={priorityImage ? "eager" : "lazy"}
               priority={priorityImage}
-              quality={priorityImage ? 90 : 75}
-              unoptimized={isLocalAsset}
+              quality={priorityImage ? 90 : 85}
             />
           ) : (
             <div className="absolute inset-0 bg-gradient-to-br from-brand-50 to-neutral-100" />
