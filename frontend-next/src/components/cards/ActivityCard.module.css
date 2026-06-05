@@ -4,9 +4,12 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 0.2rem;
-  padding: 0.15rem 0;
+  width: 100%;
+  padding: 0.35rem 0;
   color: inherit;
   text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
   transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -21,29 +24,11 @@
   transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.priceCta:hover,
-.priceCta:focus-visible,
-.priceCta:active {
-  transform: translateX(3px);
-}
-
-.priceCta:hover::after,
-.priceCta:focus-visible::after,
-.priceCta:active::after {
-  width: 100%;
-}
-
 .priceRow {
   display: flex;
   align-items: baseline;
   gap: 0.125rem;
-  transition: color 0.35s ease;
-}
-
-.priceCta:hover .priceRow,
-.priceCta:focus-visible .priceRow,
-.priceCta:active .priceRow {
-  color: #004d67;
+  transition: color 0.35s ease, transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .priceAmount {
@@ -51,6 +36,7 @@
   font-weight: 700;
   line-height: 1;
   letter-spacing: -0.02em;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .priceCurrency {
@@ -58,12 +44,6 @@
   font-weight: 600;
   color: #737373;
   transition: color 0.35s ease;
-}
-
-.priceCta:hover .priceCurrency,
-.priceCta:focus-visible .priceCurrency,
-.priceCta:active .priceCurrency {
-  color: #007bb6;
 }
 
 .reserveHint {
@@ -82,21 +62,8 @@
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.priceCta:hover .reserveHint,
-.priceCta:focus-visible .reserveHint,
-.priceCta:active .reserveHint {
-  opacity: 1;
-  transform: translateY(0);
-}
-
 .reserveIcon {
   transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.priceCta:hover .reserveIcon,
-.priceCta:focus-visible .reserveIcon,
-.priceCta:active .reserveIcon {
-  transform: translateX(2px);
 }
 
 .shine {
@@ -119,35 +86,169 @@
   background: linear-gradient(
     105deg,
     transparent 0%,
-    rgba(0, 180, 216, 0.08) 45%,
+    rgba(0, 180, 216, 0.1) 45%,
     transparent 90%
   );
   transform: skewX(-18deg);
   transition: left 0.65s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.priceCta:hover .shine,
-.priceCta:focus-visible .shine,
-.priceCta:active .shine {
-  opacity: 1;
+.pulseRing {
+  pointer-events: none;
+  position: absolute;
+  inset: -0.35rem -0.65rem;
+  border-radius: 0.65rem;
+  border: 1px solid transparent;
+  opacity: 0;
+  transform: scale(0.98);
 }
 
-.priceCta:hover .shine::before,
-.priceCta:focus-visible .shine::before,
-.priceCta:active .shine::before {
-  left: 140%;
+/* Desktop: hover-only micro-interactions */
+@media (hover: hover) and (pointer: fine) {
+  .priceCta:hover,
+  .priceCta:focus-visible {
+    transform: translateX(3px);
+  }
+
+  .priceCta:hover::after,
+  .priceCta:focus-visible::after {
+    width: 100%;
+  }
+
+  .priceCta:hover .priceRow,
+  .priceCta:focus-visible .priceRow {
+    color: #004d67;
+  }
+
+  .priceCta:hover .priceCurrency,
+  .priceCta:focus-visible .priceCurrency {
+    color: #007bb6;
+  }
+
+  .priceCta:hover .reserveHint,
+  .priceCta:focus-visible .reserveHint {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .priceCta:hover .reserveIcon,
+  .priceCta:focus-visible .reserveIcon {
+    transform: translateX(2px);
+  }
+
+  .priceCta:hover .shine,
+  .priceCta:focus-visible .shine {
+    opacity: 1;
+  }
+
+  .priceCta:hover .shine::before,
+  .priceCta:focus-visible .shine::before {
+    left: 140%;
+  }
+}
+
+/* Mobile / touch: tap feedback without hover dependency */
+@media (hover: none), (pointer: coarse) {
+  .priceCta {
+    padding: 0.5rem 0;
+  }
+
+  .reserveHint {
+    opacity: 0.45;
+    transform: translateY(0);
+  }
+
+  .priceCta:active {
+    transform: scale(0.985);
+  }
+
+  .priceCta:active::after {
+    width: 100%;
+  }
+
+  .priceCta:active .priceRow {
+    color: #004d67;
+  }
+
+  .priceCta:active .priceCurrency {
+    color: #007bb6;
+  }
+
+  .priceCta:active .reserveHint {
+    opacity: 1;
+  }
+
+  .priceCta:active .reserveIcon {
+    transform: translateX(2px);
+  }
+
+  .priceCta:active .shine {
+    opacity: 1;
+  }
+
+  .priceCta:active .shine::before {
+    left: 140%;
+  }
+
+  .priceTapped .priceAmount {
+    animation: pricePulse 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .priceTapped .pulseRing {
+    animation: tapRing 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .priceTapped::after {
+    width: 100%;
+  }
+
+  .priceTapped .reserveHint {
+    opacity: 1;
+  }
+}
+
+@keyframes pricePulse {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes tapRing {
+  0% {
+    opacity: 0;
+    transform: scale(0.96);
+    border-color: rgba(0, 180, 216, 0);
+  }
+  35% {
+    opacity: 1;
+    border-color: rgba(0, 180, 216, 0.22);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.02);
+    border-color: rgba(0, 180, 216, 0);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .priceCta,
   .priceCta::after,
   .priceRow,
+  .priceAmount,
   .priceCurrency,
   .reserveHint,
   .reserveIcon,
   .shine,
-  .shine::before {
+  .shine::before,
+  .pulseRing {
     transition: none;
+    animation: none;
     transform: none;
   }
 

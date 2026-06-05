@@ -1,5 +1,6 @@
 "use client";
 
+import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { useRoutePrefetch } from "@/hooks/useRoutePrefetch";
@@ -62,6 +63,8 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
   priorityImage = false,
 }) => {
   const { prefetchRoute } = useRoutePrefetch();
+  const [priceTapped, setPriceTapped] = useState(false);
+  const tapTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const primaryImage = img[0];
   const isLocalAsset =
     typeof primaryImage === "string" &&
@@ -79,6 +82,13 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
 
   const prefetchActivity = () => prefetchRoute(link, { immediate: true });
   const prefetchBooking = () => prefetchRoute(bookingHref, { immediate: true });
+
+  const handlePriceTouchStart = () => {
+    prefetchBooking();
+    setPriceTapped(true);
+    if (tapTimerRef.current) clearTimeout(tapTimerRef.current);
+    tapTimerRef.current = setTimeout(() => setPriceTapped(false), 480);
+  };
 
   return (
     <article className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-neutral-200/70 bg-white transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,77,103,0.1)]">
@@ -166,13 +176,14 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
         <div className="mt-auto border-t border-neutral-100 pt-4">
           <Link
             href={bookingHref}
-            className={styles.priceCta}
+            className={`${styles.priceCta} ${priceTapped ? styles.priceTapped : ""}`}
             aria-label={`Reservar ${title.trim()} desde ${prize} euros`}
             prefetch
             onMouseEnter={prefetchBooking}
             onFocus={prefetchBooking}
-            onTouchStart={prefetchBooking}
+            onTouchStart={handlePriceTouchStart}
           >
+            <span className={styles.pulseRing} aria-hidden />
             <span className={styles.shine} aria-hidden />
             <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-400">
               {priceLabel}
