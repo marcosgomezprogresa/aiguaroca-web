@@ -102,8 +102,8 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
         onTouchStart={prefetchActivity}
       >
         <div
-          className={`relative w-full ${
-            inRecommend ? "h-60 sm:h-64" : "h-64 sm:h-72 lg:h-[19rem]"
+          className={`relative w-full overflow-hidden rounded-t-2xl ${
+            inRecommend ? "h-44 sm:h-48" : "h-48 sm:h-52 lg:h-56"
           }`}
         >
           {primaryImage ? (
@@ -113,10 +113,10 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
               fill
               sizes={
                 inRecommend
-                  ? "(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 480px"
-                  : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 640px"
+                  ? "(max-width: 640px) 85vw, (max-width: 1024px) 40vw, 380px"
+                  : "(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 420px"
               }
-              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-[1.02]"
               loading={priorityImage ? "eager" : "lazy"}
               priority={priorityImage}
               quality={95}
