@@ -22,7 +22,7 @@ const InputContainer: React.FC<InputContainerProps> = ({
   readOnly = false,
 }) => {
   return (
-    <div className="space-y-2 w-full text-lg">
+    <div className="min-w-0 w-full space-y-2 text-base sm:text-lg">
       <p className="font-medium text-black">{label}</p>
       <div className="input-container align-center">
         {icon && icon}

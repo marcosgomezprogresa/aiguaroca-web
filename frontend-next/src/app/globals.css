@@ -102,7 +102,7 @@
   }
 
   .input-container {
-    @apply border border-neutral-300 bg-[#F9FAFB] text-neutral-900 rounded-xl p-3 gap-3;
+    @apply flex min-w-0 w-full items-center border border-neutral-300 bg-[#F9FAFB] text-neutral-900 rounded-xl p-3 gap-3;
   }
 
   .checkbox-container {

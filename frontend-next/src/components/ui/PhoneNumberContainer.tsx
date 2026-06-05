@@ -31,7 +31,7 @@ const PhoneNumberContainer: React.FC<PhoneNumberContainerProps> = ({
   };
 
   return (
-    <div className="space-y-2 w-full text-lg relative">
+    <div className="relative min-w-0 w-full space-y-2 text-base sm:text-lg">
       <p className="font-medium text-black">{label}</p>
       <div className="align-center input-container">
         <div className="align-center gap-2 cursor-pointer">
