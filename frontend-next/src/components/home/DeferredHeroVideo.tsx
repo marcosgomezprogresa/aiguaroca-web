@@ -3,7 +3,12 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-const DeferredHeroVideo = () => {
+interface DeferredHeroVideoProps {
+  className?: string;
+}
+
+const DeferredHeroVideo = ({ className = "" }: DeferredHeroVideoProps) => {
+  const mediaClassName = `h-full w-full object-cover rounded-xl lg:rounded-3xl ${className}`.trim();
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   useEffect(() => {
@@ -30,7 +35,7 @@ const DeferredHeroVideo = () => {
         playsInline
         controls={false}
         style={{ pointerEvents: "none" }}
-        className="h-full w-full object-cover rounded-xl lg:rounded-3xl"
+        className={mediaClassName}
         preload="none"
       />
     );
@@ -45,7 +50,7 @@ const DeferredHeroVideo = () => {
       priority
       quality={50}
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-      className="w-full h-full object-cover rounded-xl lg:rounded-3xl"
+      className={mediaClassName}
     />
   );
 };
