@@ -3,6 +3,8 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRoutePrefetch } from "@/hooks/useRoutePrefetch";
+import { getActivityBookingHref } from "@/lib/booking";
+import styles from "./ActivityCard.module.css";
 
 interface ActivityCardProps {
   inRecommend?: boolean;
@@ -66,6 +68,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
     primaryImage.startsWith("/api/v1/assets/");
 
   const seoTitle = formatSeoTitle(title);
+  const bookingHref = getActivityBookingHref(title);
   const descriptionLimit = inRecommend ? 96 : 120;
   const displayDescription =
     des.length > descriptionLimit
@@ -74,43 +77,46 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
 
   const levelConfig = getLevelConfig(level);
 
+  const prefetchActivity = () => prefetchRoute(link, { immediate: true });
+  const prefetchBooking = () => prefetchRoute(bookingHref, { immediate: true });
+
   return (
     <article className="group relative flex h-full w-full flex-col overflow-hidden rounded-2xl border border-neutral-200/70 bg-white transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[0_12px_32px_rgba(0,77,103,0.1)]">
       <Link
         href={link}
-        className="absolute inset-0 z-20 rounded-[inherit]"
-        aria-label={`Ver ${seoTitle}`}
+        className="relative block w-full shrink-0 overflow-hidden bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2"
+        aria-label={`Ver detalles de ${seoTitle}`}
         prefetch
-        onMouseEnter={() => prefetchRoute(link, { immediate: true })}
-        onFocus={() => prefetchRoute(link, { immediate: true })}
-        onTouchStart={() => prefetchRoute(link, { immediate: true })}
-      />
-
-      <div
-        className={`relative w-full shrink-0 overflow-hidden bg-neutral-100 ${
-          inRecommend ? "h-56 sm:h-60" : "h-60 sm:h-64 lg:h-[17.5rem]"
-        }`}
+        onMouseEnter={prefetchActivity}
+        onFocus={prefetchActivity}
+        onTouchStart={prefetchActivity}
       >
-        {primaryImage ? (
-          <Image
-            src={primaryImage}
-            alt={`${seoTitle} - Actividad de aventura en Valencia | Aiguaroca`}
-            fill
-            sizes={
-              inHome
-                ? "(max-width: 640px) 100vw, (max-width: 1024px) 560px, 960px"
-                : "(max-width: 640px) 100vw, (max-width: 1024px) 640px, 1080px"
-            }
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
-            loading={priorityImage ? "eager" : "lazy"}
-            priority={priorityImage}
-            quality={priorityImage ? 90 : 75}
-            unoptimized={isLocalAsset}
-          />
-        ) : (
-          <div className="absolute inset-0 bg-gradient-to-br from-brand-50 to-neutral-100" />
-        )}
-      </div>
+        <div
+          className={`relative w-full ${
+            inRecommend ? "h-60 sm:h-64" : "h-64 sm:h-72 lg:h-[19rem]"
+          }`}
+        >
+          {primaryImage ? (
+            <Image
+              src={primaryImage}
+              alt={`${seoTitle} - Actividad de aventura en Valencia | Aiguaroca`}
+              fill
+              sizes={
+                inHome
+                  ? "(max-width: 640px) 100vw, (max-width: 1024px) 560px, 960px"
+                  : "(max-width: 640px) 100vw, (max-width: 1024px) 640px, 1080px"
+              }
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+              loading={priorityImage ? "eager" : "lazy"}
+              priority={priorityImage}
+              quality={priorityImage ? 90 : 75}
+              unoptimized={isLocalAsset}
+            />
+          ) : (
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-50 to-neutral-100" />
+          )}
+        </div>
+      </Link>
 
       <div className="flex flex-1 flex-col gap-4 p-4 sm:p-5">
         <div className="space-y-2">
@@ -120,11 +126,16 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
             </span>
           )}
 
-          <h2
-            className="truncate text-lg font-bold leading-tight tracking-tight text-neutral-900 sm:text-xl"
-            title={seoTitle}
-          >
-            {seoTitle}
+          <h2 className="min-w-0" title={seoTitle}>
+            <Link
+              href={link}
+              className="block truncate text-lg font-bold leading-tight tracking-tight text-neutral-900 transition-colors duration-300 hover:text-brand-600 focus-visible:outline-none focus-visible:text-brand-600 sm:text-xl"
+              prefetch
+              onMouseEnter={prefetchActivity}
+              onFocus={prefetchActivity}
+            >
+              {seoTitle}
+            </Link>
           </h2>
         </div>
 
@@ -152,38 +163,44 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
           {displayDescription}
         </p>
 
-        <div className="mt-auto flex items-end justify-between gap-4 border-t border-neutral-100 pt-4">
-          <div>
-            <p className="text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-400">
-              {priceLabel}
-            </p>
-            <p className="mt-0.5 flex items-baseline gap-0.5 text-neutral-900">
-              <span className="text-2xl font-bold leading-none">{prize}</span>
-              <span className="text-base font-semibold text-neutral-500">€</span>
-            </p>
-          </div>
-
-          <span
-            aria-hidden
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-brand-600 transition-colors duration-300 group-hover:text-brand-500"
+        <div className="mt-auto border-t border-neutral-100 pt-4">
+          <Link
+            href={bookingHref}
+            className={styles.priceCta}
+            aria-label={`Reservar ${title.trim()} desde ${prize} euros`}
+            prefetch
+            onMouseEnter={prefetchBooking}
+            onFocus={prefetchBooking}
+            onTouchStart={prefetchBooking}
           >
-            Ver actividad
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 14 14"
-              fill="none"
-              className="transition-transform duration-300 group-hover:translate-x-0.5"
-            >
-              <path
-                d="M2.5 7H11.5M11.5 7L7.5 3M11.5 7L7.5 11"
-                stroke="currentColor"
-                strokeWidth="1.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
-          </span>
+            <span className={styles.shine} aria-hidden />
+            <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-400">
+              {priceLabel}
+            </span>
+            <span className={styles.priceRow}>
+              <span className={styles.priceAmount}>{prize}</span>
+              <span className={styles.priceCurrency}>€</span>
+            </span>
+            <span className={styles.reserveHint}>
+              Reservar ahora
+              <svg
+                className={styles.reserveIcon}
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                aria-hidden
+              >
+                <path
+                  d="M2 6H10M10 6L6.5 2.5M10 6L6.5 9.5"
+                  stroke="currentColor"
+                  strokeWidth="1.25"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </Link>
         </div>
       </div>
     </article>

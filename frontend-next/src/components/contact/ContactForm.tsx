@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { FaEnvelope, FaUser } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import InputContainer from "@/components/ui/InputContainer";
@@ -13,11 +14,22 @@ import { RiLoader4Line } from "react-icons/ri";
 import axios from "axios";
 
 const ContactForm: React.FC = () => {
+  const searchParams = useSearchParams();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const activity = searchParams.get("actividad")?.trim();
+    if (!activity) return;
+
+    setMessage((current) => {
+      if (current.trim().length > 0) return current;
+      return `Hola, me gustaría reservar: ${activity}.`;
+    });
+  }, [searchParams]);
 
   const contactHandler = async (e: React.FormEvent) => {
     e.preventDefault();

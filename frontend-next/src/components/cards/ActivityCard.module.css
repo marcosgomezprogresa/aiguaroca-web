@@ -1,0 +1,161 @@
+.priceCta {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.15rem 0;
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.priceCta::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #007bb6 0%, #00b4d8 100%);
+  transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.priceCta:hover,
+.priceCta:focus-visible,
+.priceCta:active {
+  transform: translateX(3px);
+}
+
+.priceCta:hover::after,
+.priceCta:focus-visible::after,
+.priceCta:active::after {
+  width: 100%;
+}
+
+.priceRow {
+  display: flex;
+  align-items: baseline;
+  gap: 0.125rem;
+  transition: color 0.35s ease;
+}
+
+.priceCta:hover .priceRow,
+.priceCta:focus-visible .priceRow,
+.priceCta:active .priceRow {
+  color: #004d67;
+}
+
+.priceAmount {
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.priceCurrency {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #737373;
+  transition: color 0.35s ease;
+}
+
+.priceCta:hover .priceCurrency,
+.priceCta:focus-visible .priceCurrency,
+.priceCta:active .priceCurrency {
+  color: #007bb6;
+}
+
+.reserveHint {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #007bb6;
+  opacity: 0;
+  transform: translateY(4px);
+  transition:
+    opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.priceCta:hover .reserveHint,
+.priceCta:focus-visible .reserveHint,
+.priceCta:active .reserveHint {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reserveIcon {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.priceCta:hover .reserveIcon,
+.priceCta:focus-visible .reserveIcon,
+.priceCta:active .reserveIcon {
+  transform: translateX(2px);
+}
+
+.shine {
+  pointer-events: none;
+  position: absolute;
+  inset: -0.25rem -0.5rem;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  opacity: 0;
+  transition: opacity 0.45s ease;
+}
+
+.shine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -120%;
+  width: 80%;
+  height: 100%;
+  background: linear-gradient(
+    105deg,
+    transparent 0%,
+    rgba(0, 180, 216, 0.08) 45%,
+    transparent 90%
+  );
+  transform: skewX(-18deg);
+  transition: left 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.priceCta:hover .shine,
+.priceCta:focus-visible .shine,
+.priceCta:active .shine {
+  opacity: 1;
+}
+
+.priceCta:hover .shine::before,
+.priceCta:focus-visible .shine::before,
+.priceCta:active .shine::before {
+  left: 140%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .priceCta,
+  .priceCta::after,
+  .priceRow,
+  .priceCurrency,
+  .reserveHint,
+  .reserveIcon,
+  .shine,
+  .shine::before {
+    transition: none;
+    transform: none;
+  }
+
+  .reserveHint {
+    opacity: 1;
+  }
+
+  .priceCta::after {
+    width: 100%;
+  }
+}

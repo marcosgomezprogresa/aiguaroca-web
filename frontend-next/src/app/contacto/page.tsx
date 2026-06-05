@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import ContactForm from "@/components/contact/ContactForm";
 import LastHeading from "@/components/home/LastHeading";
 import {
@@ -47,7 +48,9 @@ const trustPoints = [
 export default function ContactPage() {
   return (
     <main className="bg-gradient-to-b from-brand-50/50 via-white to-neutral-50/30">
-      <ContactForm />
+      <Suspense fallback={null}>
+        <ContactForm />
+      </Suspense>
 
       <section className="custom-container py-16 lg:py-24">
         <div className="mx-auto max-w-3xl text-center">

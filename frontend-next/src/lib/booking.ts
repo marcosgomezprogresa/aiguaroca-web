@@ -1,5 +1,12 @@
 import axios from "axios";
 import { isValid, parse } from "date-fns";
+import { routes } from "./routes";
+
+export function getActivityBookingHref(activityTitle: string) {
+  const activity = activityTitle.trim();
+  const params = new URLSearchParams({ actividad: activity });
+  return `${routes.contacto.path}?${params.toString()}`;
+}
 
 export interface BookingDateValidation {
   value: string;
