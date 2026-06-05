@@ -1,3 +1,5 @@
+"use client";
+
 import Heading from "../ui/Heading";
 
 interface HomeHeroTextProps {

@@ -8,7 +8,7 @@ interface DeferredHeroVideoProps {
 }
 
 const DeferredHeroVideo = ({ className = "" }: DeferredHeroVideoProps) => {
-  const mediaClassName = `h-full w-full object-cover rounded-xl lg:rounded-3xl ${className}`.trim();
+  const mediaClassName = `object-cover ${className}`.trim();
   const [shouldLoadVideo, setShouldLoadVideo] = useState(false);
 
   useEffect(() => {
@@ -35,7 +35,7 @@ const DeferredHeroVideo = ({ className = "" }: DeferredHeroVideoProps) => {
         playsInline
         controls={false}
         style={{ pointerEvents: "none" }}
-        className={mediaClassName}
+        className={`absolute inset-0 h-full w-full ${mediaClassName}`}
         preload="none"
       />
     );
@@ -45,12 +45,12 @@ const DeferredHeroVideo = ({ className = "" }: DeferredHeroVideoProps) => {
     <Image
       src="/api/v1/assets/poster.png"
       alt="Aiguaroca Aventura"
-      width={800}
-      height={450}
+      fill
       priority
-      quality={50}
+      quality={75}
       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
       className={mediaClassName}
+      unoptimized
     />
   );
 };

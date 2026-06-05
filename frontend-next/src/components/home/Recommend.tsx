@@ -24,7 +24,7 @@ const Recommend = () => {
           {activitiesData.map((itm, idx) => (
             <div
               key={idx}
-              className="flex min-h-[480px] min-w-[86%] snap-start sm:min-h-[500px] sm:min-w-[45%] lg:min-h-[520px] lg:min-w-[28%] xl:min-w-[24%]"
+              className="flex min-w-[86%] snap-start sm:min-w-[45%] lg:min-w-[28%] xl:min-w-[24%]"
             >
               <ActivityCard
                 inHome={true}

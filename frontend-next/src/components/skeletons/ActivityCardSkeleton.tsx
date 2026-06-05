@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/Skeleton";
 export default function ActivityCardSkeleton() {
   return (
     <div className="w-full overflow-hidden rounded-2xl border border-neutral-200/70 bg-white">
-      <Skeleton className="h-48 w-full rounded-none sm:h-52" />
+      <Skeleton className="aspect-video w-full rounded-none" />
       <div className="space-y-4 p-4 sm:p-5">
         <Skeleton className="h-6 w-4/5 rounded-lg" />
         <div className="grid grid-cols-3 gap-2">
