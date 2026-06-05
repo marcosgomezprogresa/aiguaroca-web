@@ -67,15 +67,15 @@ const nextConfig: NextConfig = {
         pathname: "/api/v1/**",
       },
     ],
-    formats: ["image/webp", "image/avif"],
+    formats: ["image/webp"],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384, 512, 640, 768],
     minimumCacheTTL: 3600,
     dangerouslyAllowSVG: true,
     contentDispositionType: "attachment",
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     unoptimized: false,
-    qualities: [50, 70, 75, 85, 90],
+    qualities: [50, 70, 75, 85, 90, 95],
   },
 
 
