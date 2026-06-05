@@ -1,9 +1,6 @@
 .priceCta {
   position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.2rem;
+  display: block;
   width: 100%;
   padding: 0.35rem 0;
   color: inherit;
@@ -22,6 +19,22 @@
   height: 1px;
   background: linear-gradient(90deg, #007bb6 0%, #00b4d8 100%);
   transition: width 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.priceBody {
+  display: flex;
+  width: 100%;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.priceMain {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  min-width: 0;
 }
 
 .priceRow {
@@ -48,15 +61,16 @@
 
 .reserveHint {
   display: inline-flex;
+  flex-shrink: 0;
   align-items: center;
   gap: 0.35rem;
   font-size: 0.7rem;
   font-weight: 600;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: #007bb6;
   opacity: 0;
-  transform: translateY(4px);
+  transform: translateX(6px);
   transition:
     opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -128,7 +142,7 @@
   .priceCta:hover .reserveHint,
   .priceCta:focus-visible .reserveHint {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
 
   .priceCta:hover .reserveIcon,
@@ -154,8 +168,9 @@
   }
 
   .reserveHint {
-    opacity: 0.45;
-    transform: translateY(0);
+    opacity: 0.5;
+    transform: translateX(0);
+    align-self: center;
   }
 
   .priceCta:active {

@@ -185,32 +185,36 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
           >
             <span className={styles.pulseRing} aria-hidden />
             <span className={styles.shine} aria-hidden />
-            <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-400">
-              {priceLabel}
-            </span>
-            <span className={styles.priceRow}>
-              <span className={styles.priceAmount}>{prize}</span>
-              <span className={styles.priceCurrency}>€</span>
-            </span>
-            <span className={styles.reserveHint}>
-              Reservar ahora
-              <svg
-                className={styles.reserveIcon}
-                width="12"
-                height="12"
-                viewBox="0 0 12 12"
-                fill="none"
-                aria-hidden
-              >
-                <path
-                  d="M2 6H10M10 6L6.5 2.5M10 6L6.5 9.5"
-                  stroke="currentColor"
-                  strokeWidth="1.25"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </span>
+            <div className={styles.priceBody}>
+              <div className={styles.priceMain}>
+                <span className="text-[11px] font-medium uppercase tracking-[0.14em] text-neutral-400">
+                  {priceLabel}
+                </span>
+                <span className={styles.priceRow}>
+                  <span className={styles.priceAmount}>{prize}</span>
+                  <span className={styles.priceCurrency}>€</span>
+                </span>
+              </div>
+              <span className={styles.reserveHint}>
+                Reservar ahora
+                <svg
+                  className={styles.reserveIcon}
+                  width="12"
+                  height="12"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  aria-hidden
+                >
+                  <path
+                    d="M2 6H10M10 6L6.5 2.5M10 6L6.5 9.5"
+                    stroke="currentColor"
+                    strokeWidth="1.25"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </div>
           </Link>
         </div>
       </div>
