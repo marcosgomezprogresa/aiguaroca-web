@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "node scripts/sync-assets.js && next dev ",
+    "optimize:hero": "node scripts/optimize-hero-media.js && node scripts/sync-assets.js",
     "build": "node scripts/sync-assets.js && next build ",
     "start": "next start",
     "lint": "eslint . --quiet",
@@ -27,6 +28,7 @@
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@ffmpeg-installer/ffmpeg": "^1.1.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

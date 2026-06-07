@@ -3,22 +3,18 @@ import Script from "next/script";
 import { getSEOConfig } from "@/lib/seoConfig";
 import { Suspense } from "react";
 
-// Import skeletons
 import HomeGridGallerySkeleton from "@/components/skeletons/HomeGridGallerySkeleton";
 import SectionSkeleton from "@/components/skeletons/SectionSkeleton";
 
-// Eager load above-the-fold components
-import HomeHero from "@/components/home/HomeHero";
-import HomeActivitySection from "@/components/home/HomeActivitySection";
+import HomeHeroV2 from "@/components/home/v2/HomeHeroV2";
+import HomeHighlightsBar from "@/components/home/v2/HomeHighlightsBar";
+import HomeActivitySectionV2 from "@/components/home/v2/HomeActivitySectionV2";
+import HomeEditorialSection from "@/components/home/v2/HomeEditorialSection";
+import HomeCtaBand from "@/components/home/v2/HomeCtaBand";
 
-// Async components for streaming (below-the-fold)
-import AsyncHomeGridGallery from "@/components/home/AsyncHomeGridGallery";
-import AsyncHomeBrandSection from "@/components/home/AsyncHomeBrandSection";
-import AsyncLastHeading from "@/components/home/AsyncLastHeading";
-
-import NaturalEnvironmentSection from "@/components/home/NaturalEnvironmentSection";
-
+import AsyncHomeAudienceGalleryV2 from "@/components/home/v2/AsyncHomeAudienceGalleryV2";
 import AsyncPetSectionHome from "@/components/home/AsyncPetSectionHome";
+import AsyncHomeBrandSection from "@/components/home/AsyncHomeBrandSection";
 
 export const metadata: Metadata = getSEOConfig("/").metadata;
 
@@ -38,33 +34,25 @@ export default function HomePage() {
         />
       )}
 
-      {/* Above the fold - loads immediately (NO Suspense) */}
-      <HomeHero />
-      
-      <HomeActivitySection />
+      <HomeHeroV2 />
+      <HomeHighlightsBar />
+      <HomeActivitySectionV2 />
 
-      {/* Grid Gallery with updated anchor texts */}
       <Suspense fallback={<HomeGridGallerySkeleton />}>
-        <AsyncHomeGridGallery />
+        <AsyncHomeAudienceGalleryV2 />
       </Suspense>
+
+      <HomeEditorialSection />
 
       <Suspense fallback={<SectionSkeleton height="h-96" />}>
         <AsyncPetSectionHome />
       </Suspense>
 
-      {/* Natural Environment Section with final CTA */}
-      <NaturalEnvironmentSection />
-
-      {/* Brand Section with rafting info and links */}
       <Suspense fallback={<SectionSkeleton height="h-96" />}>
         <AsyncHomeBrandSection />
       </Suspense>
 
-
-      {/* Last Heading */}
-      <Suspense fallback={<SectionSkeleton height="h-40" />}>
-        <AsyncLastHeading />
-      </Suspense>
+      <HomeCtaBand />
     </>
   );
 }

@@ -42,16 +42,18 @@ const DeferredHeroVideo = ({ className = "" }: DeferredHeroVideoProps) => {
   }
 
   return (
-    <Image
-      src="/api/v1/assets/poster.png"
-      alt="Aiguaroca Aventura"
-      fill
-      priority
-      quality={75}
-      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-      className={mediaClassName}
-      unoptimized
-    />
+    <div className="relative h-full w-full">
+      <Image
+        src="/api/v1/assets/poster.png"
+        alt="Aiguaroca Aventura"
+        fill
+        priority
+        quality={75}
+        sizes="100vw"
+        className={mediaClassName}
+        unoptimized
+      />
+    </div>
   );
 };
 
