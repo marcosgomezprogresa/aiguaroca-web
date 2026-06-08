@@ -1,5 +1,6 @@
 import ActivityHeroStatic from "@/components/ui/ActivityHeroStatic";
-import DeferredActivitySections from "@/components/activities/DeferredActivitySections";
+import ActivityDetailFooter from "@/components/activities/ActivityDetailFooter";
+import { routes } from "@/lib/routes";
 import img2 from "@/assets/images/circuito-multiaventura-side1.svg";
 import img3 from "@/assets/images/circuito-multiaventura-side2.svg";
 
@@ -425,7 +426,8 @@ export default function CircuitoMultiaventuraPage() {
         activityName="Circuito Multiaventura"
         faq={faq}
       />
-      <DeferredActivitySections
+      <ActivityDetailFooter
+        excludeLink={routes.circuitoMultiaventura.path}
         multiActivityHeading="Combina el circuito con otras actividades"
         childrenBeforeLastHeading={
           <div className="custom-container pt-4 lg:pt-6 pb-12 lg:pb-24 space-y-8">

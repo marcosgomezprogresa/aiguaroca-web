@@ -1,5 +1,6 @@
 import ActivityHeroStatic from "@/components/ui/ActivityHeroStatic";
-import DeferredActivitySections from "@/components/activities/DeferredActivitySections";
+import ActivityDetailFooter from "@/components/activities/ActivityDetailFooter";
+import { routes } from "@/lib/routes";
 import canyon1 from "@/assets/images/canyon-1.svg";
 import canyon2 from "@/assets/images/canyon-2.svg";
 import canyon3 from "@/assets/images/canyon-3.svg";
@@ -149,7 +150,7 @@ export default function BarrancoAcuaticoPage() {
         showSeeMore={false}
       />
       
-      <DeferredActivitySections />
+      <ActivityDetailFooter excludeLink={routes.barrancoAcuatico.path} />
     </>
   );
 }

@@ -1,5 +1,6 @@
 import ActivityHeroStatic from "@/components/ui/ActivityHeroStatic";
-import DeferredActivitySections from "@/components/activities/DeferredActivitySections";
+import ActivityDetailFooter from "@/components/activities/ActivityDetailFooter";
+import { routes } from "@/lib/routes";
 import kayak1 from "@/assets/images/kayak-1.svg";
 import kayak2 from "@/assets/images/kayak-2.svg";
 import kayak3 from "@/assets/images/kayak-3.svg";
@@ -187,7 +188,7 @@ export default function KayakPage() {
         faq={faq}
         showSeeMore={false}
       />
-      <DeferredActivitySections />
+      <ActivityDetailFooter excludeLink={routes.kayakAguasBravas.path} />
     </>
   );
 }

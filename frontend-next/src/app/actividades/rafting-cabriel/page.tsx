@@ -1,5 +1,6 @@
 import ActivityHeroStatic from "@/components/ui/ActivityHeroStatic";
-import DeferredActivitySections from "@/components/activities/DeferredActivitySections";
+import ActivityDetailFooter from "@/components/activities/ActivityDetailFooter";
+import { routes } from "@/lib/routes";
 import raf2 from "@/assets/images/raf-2.svg";
 import raf3 from "@/assets/images/raf-3.svg";
 import tamayo3 from "@/assets/images/tamayo-3.svg";
@@ -208,7 +209,7 @@ export default function RaftingCabrielPage() {
           </p>
         }
       />
-      <DeferredActivitySections />
+      <ActivityDetailFooter excludeLink={routes.raftingCabriel.path} />
     </>
   );
 }

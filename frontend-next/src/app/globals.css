@@ -253,3 +253,16 @@ video::-webkit-media-controls {
   bottom: 10px !important;
   right: 10px !important;
 }
+
+/* Carrusel de recomendaciones — estilos globales estables (evita fallos de hidratación) */
+.recommend-track {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch;
+}
+
+.recommend-slide {
+  flex-shrink: 0 !important;
+  min-width: 0;
+}

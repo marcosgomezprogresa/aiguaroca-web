@@ -1,17 +1,16 @@
-"use client";
-
-import ActivityCard from "@/components/cards/ActivityCard";
+import ShowcaseActivityCard from "@/components/home/v2/ShowcaseActivityCard";
+import homeStyles from "@/components/home/v2/HomeSectionsV2.module.css";
 import { activitiesData, allActivitiesData } from "@/lib/data";
+import styles from "./ActivitySection.module.css";
 
 interface ActivitySectionProps {
   showActivity: string[];
-  priceLabel?: string; // Optional custom label for price
+  priceLabel?: string;
 }
 
-const ActivitySection: React.FC<ActivitySectionProps> = ({ 
-  showActivity, 
-  priceLabel 
-}) => {
+const ActivitySection = ({
+  showActivity,
+}: ActivitySectionProps) => {
   const sectionActivities = [...allActivitiesData, ...activitiesData].filter(
     (activity, index, array) =>
       showActivity.includes(activity.title) &&
@@ -19,11 +18,12 @@ const ActivitySection: React.FC<ActivitySectionProps> = ({
   );
 
   return (
-    <div className="custom-container py-20 space-y-16">
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
-        {sectionActivities.map((itm, idx) => (
-            <ActivityCard
-              key={idx}
+    <section className={homeStyles.sectionBlock} aria-label="Actividades relacionadas">
+      <div className="custom-container">
+        <div className={styles.grid}>
+          {sectionActivities.map((itm, idx) => (
+            <ShowcaseActivityCard
+              key={itm.link}
               title={itm.title}
               des={itm.des}
               level={itm.level}
@@ -31,12 +31,13 @@ const ActivitySection: React.FC<ActivitySectionProps> = ({
               duration={itm.duration}
               prize={itm.prize}
               link={itm.link}
-              img={itm.images}
-              priceLabel={priceLabel}
+              image={itm.images[0]}
+              priorityImage={idx < 2}
             />
           ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 };
 

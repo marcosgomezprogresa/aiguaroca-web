@@ -10,7 +10,7 @@ import HomeHeroV2 from "@/components/home/v2/HomeHeroV2";
 import HomeHighlightsBar from "@/components/home/v2/HomeHighlightsBar";
 import HomeActivitySectionV2 from "@/components/home/v2/HomeActivitySectionV2";
 import HomeEditorialSection from "@/components/home/v2/HomeEditorialSection";
-import HomeCtaBand from "@/components/home/v2/HomeCtaBand";
+import AsyncLastHeading from "@/components/home/AsyncLastHeading";
 
 import AsyncHomeAudienceGalleryV2 from "@/components/home/v2/AsyncHomeAudienceGalleryV2";
 import AsyncPetSectionHome from "@/components/home/AsyncPetSectionHome";
@@ -52,7 +52,9 @@ export default function HomePage() {
         <AsyncHomeBrandSection />
       </Suspense>
 
-      <HomeCtaBand />
+      <Suspense fallback={<SectionSkeleton height="h-40" />}>
+        <AsyncLastHeading />
+      </Suspense>
     </>
   );
 }

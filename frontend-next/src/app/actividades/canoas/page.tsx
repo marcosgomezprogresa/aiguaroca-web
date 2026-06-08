@@ -1,5 +1,6 @@
 import ActivityHeroStatic from "@/components/ui/ActivityHeroStatic";
-import DeferredActivitySections from "@/components/activities/DeferredActivitySections";
+import ActivityDetailFooter from "@/components/activities/ActivityDetailFooter";
+import { routes } from "@/lib/routes";
 import canoaMain from "@/assets/images/canoa-raft-main.svg";
 import canoaSide1 from "@/assets/images/canoa-raft-side1.svg";
 import canoaSide2 from "@/assets/images/canoa-raft-side2.svg";
@@ -188,7 +189,7 @@ export default function CanoasPage() {
         showSeeMore={false}
       />
       
-      <DeferredActivitySections />
+      <ActivityDetailFooter excludeLink={routes.canoas.path} />
     </>
   );
 }

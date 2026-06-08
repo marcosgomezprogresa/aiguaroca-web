@@ -130,7 +130,7 @@ export default function PaintballPageClient() {
       />
 
       <MultiActivity />
-      <Recommend />
+      <Recommend excludeLink="/actividades/paintball" />
       <LastHeading />
     </>
   );

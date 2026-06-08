@@ -85,6 +85,24 @@ const nextConfig: NextConfig = {
   // React strict mode
   reactStrictMode: true,
 
+  // Avoid Next.js devtools segment explorer manifest errors in local dev (15.5.x)
+  devIndicators: false,
+
+  webpack: (config, { dev }) => {
+    if (dev) {
+      const ignored = config.watchOptions?.ignored;
+      config.watchOptions = {
+        ...config.watchOptions,
+        ignored: [
+          ...(Array.isArray(ignored) ? ignored : ignored ? [ignored] : []),
+          "**/node_modules/**",
+          "**/.git/**",
+        ],
+      };
+    }
+    return config;
+  },
+
   // Production optimizations
   poweredByHeader: false,
 

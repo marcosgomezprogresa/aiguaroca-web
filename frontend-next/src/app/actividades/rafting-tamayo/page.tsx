@@ -1,5 +1,6 @@
 import ActivityHeroStatic from "@/components/ui/ActivityHeroStatic";
-import DeferredActivitySections from "@/components/activities/DeferredActivitySections";
+import ActivityDetailFooter from "@/components/activities/ActivityDetailFooter";
+import { routes } from "@/lib/routes";
 import ActivitySection from "@/components/rafting/ActivitySection";
 import PetSection from "@/components/ui/PetSection";
 import tamayo2 from "@/assets/images/tamayo-2.svg";
@@ -191,7 +192,7 @@ export default function RaftingTamayoPage() {
       />
       <ActivitySection showActivity={showActivity} priceLabel="Contactanos" />
       <PetSection />
-      <DeferredActivitySections />
+      <ActivityDetailFooter excludeLink={routes.raftingTamayo.path} />
     </>
   );
 }

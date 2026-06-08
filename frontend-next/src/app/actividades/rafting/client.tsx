@@ -75,7 +75,7 @@ export default function RaftingPageClient() {
       <ActivitySection showActivity={activity} priceLabel="Contactanos" />
       <MultiActivity />
       <PetSection />
-      <Recommend />
+      <Recommend excludeLink="/actividades/rafting" />
       <LastHeading />
     </>
   );
