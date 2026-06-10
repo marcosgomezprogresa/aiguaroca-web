@@ -10,6 +10,7 @@ interface ActivitySectionProps {
 
 const ActivitySection = ({
   showActivity,
+  priceLabel = "Desde",
 }: ActivitySectionProps) => {
   const sectionActivities = [...allActivitiesData, ...activitiesData].filter(
     (activity, index, array) =>
@@ -25,7 +26,6 @@ const ActivitySection = ({
             <ShowcaseActivityCard
               key={itm.link}
               title={itm.title}
-              des={itm.des}
               level={itm.level}
               age={itm.age}
               duration={itm.duration}
@@ -33,6 +33,7 @@ const ActivitySection = ({
               link={itm.link}
               image={itm.images[0]}
               priorityImage={idx < 2}
+              priceLabel={priceLabel}
             />
           ))}
         </div>

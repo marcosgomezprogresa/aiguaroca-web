@@ -6,7 +6,6 @@ import ActivitySection from '@/components/rafting/ActivitySection';
 import FamiliasPetSection from '@/components/familias/FamiliasPetSection';
 import FamiliasModal from '@/components/familias/FamiliasModal';
 import MultiActivity from '@/components/home/MultiActivity';
-import LastHeading from '@/components/home/LastHeading';
 import activity from '@/assets/images/activity.svg';
 import familiasIcon from '@/assets/images/familias-icon.svg';
 
@@ -113,7 +112,6 @@ const FamiliasClient: React.FC = () => {
 
       <MultiActivity />
 
-      <LastHeading />
     </>
   );
 };

@@ -5,7 +5,6 @@ import ActivityHero from "@/components/ui/ActivityHero";
 import Modal from "@/components/ui/Modal";
 import MultiActivity from "@/components/home/MultiActivity";
 import Recommend from "@/components/home/Recommend";
-import LastHeading from "@/components/home/LastHeading";
 import paintballMain from "@/assets/images/paintball-main.svg";
 import paintballSide1 from "@/assets/images/paintball-side1.svg";
 import paintballSide2 from "@/assets/images/paintball-side2.svg";
@@ -131,7 +130,6 @@ export default function PaintballPageClient() {
 
       <MultiActivity />
       <Recommend excludeLink="/actividades/paintball" />
-      <LastHeading />
     </>
   );
 }

@@ -4,7 +4,6 @@ import React from 'react';
 import SingleActivityHero from '@/components/home/SingleActivityHero';
 import ActivitiesGallerySection from '@/components/home/ActivitiesGallerySection';
 import MultiActivity from '@/components/home/MultiActivity';
-import LastHeading from '@/components/home/LastHeading';
 import ActivityCard from '@/components/cards/ActivityCard';
 import { allActivitiesData } from '@/lib/data';
 
@@ -55,7 +54,6 @@ const ActivitiesPageClient: React.FC = () => {
       <MultiActivity />
 
       {/* Last Heading */}
-      <LastHeading />
     </>
   );
 };

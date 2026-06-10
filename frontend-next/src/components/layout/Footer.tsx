@@ -1,6 +1,5 @@
 "use client";
 
-import Button from "@/components/ui/Button";
 import Image from "next/image";
 import {
   FaFacebookF,
@@ -21,10 +20,6 @@ import comp6 from "@/assets/images/comp-6.svg";
 import comp7 from "@/assets/images/comp-7.svg";
 import comp8 from "@/assets/images/comp-8.svg";
 import Link from "next/link";
-import { useState } from "react";
-import { toast } from "sonner";
-import { emailRegex } from "@/lib/utils";
-import { RiLoader4Line } from "react-icons/ri";
 import { activityNavRoutes, legalRoutes, offerNavRoutes } from "@/lib/routes";
 
 const Footer = () => {
@@ -70,65 +65,13 @@ const Footer = () => {
     { img: comp3, alt: "comp8" },
   ];
 
-  const [email, setEmail] = useState("");
-  const [loading, setLoading] = useState(false);
-
-  const subscribeHandler = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    if (!email) return toast.error("Por favor proporcione correo electrónico");
-    if (!emailRegex.test(email)) return toast.error("Correo electrónico no válido");
-    
-    setLoading(true);
-    try {
-      const axios = (await import("axios")).default;
-      const res = await axios.post("/api/v1/subscribe", { email });
-      if (res.status === 200 || res.status === 201) {
-        setEmail("");
-        toast.success("Gracias por suscribirte a nosotros");
-      }
-    } catch {
-      toast.error("Error al suscribirte");
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const date = new Date();
   const year = date.getFullYear();
 
   return (
     <div className="px-2.5 lg:px-0 pb-5 lg:pb-0">
       <div className="bg-footer text-white rounded-3xl lg:rounded-none">
-        <div className="custom-container pt-16 pb-5 lg:pb-0">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 pb-12 border-b border-neutral-700">
-            <p className="col-span-1 font-medium text-4xl">
-              Suscribete a nuestras noticias
-            </p>
-            <form
-              onSubmit={subscribeHandler}
-              className="col-span-1 flex h-fit items-stretch bg-white text-lg rounded-lg"
-            >
-              <input
-                readOnly={loading}
-                type="text"
-                value={email}
-                placeholder="Introduce tu correo electrónico"
-                className="bg-transparent px-5 outline-none w-full placeholder-neutral-700 text-black"
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <Button
-                type="submit"
-                className="bg-brand-300 text-black w-28 lg:w-54 text-sm lg:text-base text-left px-5 py-3 rounded-lg center"
-              >
-                {loading ? (
-                  <RiLoader4Line className="animate-spin text-center text-2xl" />
-                ) : (
-                  <p>Suscribete</p>
-                )}
-              </Button>
-            </form>
-          </div>
-
+        <div className="custom-container pt-10 pb-5 lg:pt-12 lg:pb-0">
           <div className="py-4 grid grid-cols-1 lg:grid-cols-4 gap-14 lg:gap-28">
             <div className="col-span-1">
               <p className="font-semibold text-2xl">{navCol1.title}</p>

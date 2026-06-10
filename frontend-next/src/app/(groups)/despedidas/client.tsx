@@ -6,7 +6,6 @@ import DespedidasActivitySection from '@/components/despedidas/DespedidasActivit
 import DespedidasModal from '@/components/despedidas/DespedidasModal';
 import ImageOverlay from '@/components/ui/ImageOverlay';
 import MultiActivity from '@/components/home/MultiActivity';
-import LastHeading from '@/components/home/LastHeading';
 import Recommend from '@/components/home/Recommend';
 import despedidasIcon from '@/assets/images/despedidas-de-solteros-icon.svg';
 import stagHenPartyOverlay from '@/assets/images/stag-hen-party-overlay.svg';
@@ -127,7 +126,6 @@ const DespedidasClient: React.FC = () => {
       />
       <MultiActivity />
       <Recommend />
-      <LastHeading />
     </>
   );
 };

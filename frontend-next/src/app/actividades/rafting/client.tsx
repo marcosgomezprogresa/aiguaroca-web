@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import ActivityHero from "@/components/ui/ActivityHero";
-import LastHeading from "@/components/home/LastHeading";
 import MultiActivity from "@/components/home/MultiActivity";
 import Recommend from "@/components/home/Recommend";
 import ActivitySection from "@/components/rafting/ActivitySection";
@@ -76,7 +75,6 @@ export default function RaftingPageClient() {
       <MultiActivity />
       <PetSection />
       <Recommend excludeLink="/actividades/rafting" />
-      <LastHeading />
     </>
   );
 }

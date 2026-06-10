@@ -7,7 +7,6 @@ import SchoolModal from '@/components/escolares/SchoolModal';
 import SchoolContactModal from '@/components/escolares/SchoolContactModal';
 import ImageOverlay from '@/components/ui/ImageOverlay';
 import ThoughtSection from '@/components/escolares/ThoughtSection';
-import LastHeading from '@/components/home/LastHeading';
 import trip1 from '@/assets/images/trip.svg';
 import trip2 from '@/assets/images/school-trip-2.svg';
 import trip3 from '@/assets/images/school-trip-3.svg';
@@ -140,7 +139,6 @@ const EscolaresClient: React.FC = () => {
 
       <ThoughtSection />
 
-      <LastHeading />
     </>
   );
 };

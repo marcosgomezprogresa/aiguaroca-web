@@ -7,7 +7,6 @@ import FirstGrid from '@/components/corporate/FirstGrid';
 import TeamBuilding from '@/components/corporate/TeamBuilding';
 import SecondGrid from '@/components/corporate/SecondGrid';
 import ImageOverlay from '@/components/ui/ImageOverlay';
-import LastHeading from '@/components/home/LastHeading';
 import empresasIcon from '@/assets/images/empresas-icon.svg';
 import corporateOverlay from '@/assets/images/corporate-overlay.svg';
 import corporate from '@/assets/images/corporate.svg';
@@ -74,7 +73,6 @@ const EmpresasClient: React.FC = () => {
         buttonText="Contactanos para un programa personalizado"
         onButtonClick={openModal}
       />
-      <LastHeading />
     </>
   );
 };

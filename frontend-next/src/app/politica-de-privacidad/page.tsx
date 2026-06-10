@@ -3,7 +3,6 @@
 import { IoCaretBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import Heading from '@/components/ui/Heading';
-import LastHeading from '@/components/home/LastHeading';
 
 export default function PrivacyPolicy() {
   const router = useRouter();
@@ -118,7 +117,6 @@ export default function PrivacyPolicy() {
           del sitio y la gestión de los pedidos.
         </p>
       </div>
-      <LastHeading />
     </>
   );
 }

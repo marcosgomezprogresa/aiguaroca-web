@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import MultiAdventureHero from "@/components/multiAdventure/MultiAdventureHero";
-import LastHeading from "@/components/home/LastHeading";
 import MultiAdventureSection from "@/components/multiAdventure/MultiAdventureSection";
 import MultiAdventureModal from "@/components/multiAdventure/MultiAdventureModal";
 import ImageOverlay from "@/components/ui/ImageOverlay";
@@ -71,7 +70,6 @@ export default function DiaMultiaventuraClient() {
         onButtonClick={openModal}
       />
 
-      <LastHeading />
     </>
   );
 }

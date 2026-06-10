@@ -6,7 +6,6 @@ import CumpleañosActivitySection from '@/components/cumpleaños/CumpleañosActi
 import CumpleañosCardsSwip from '@/components/cumpleaños/CumpleañosCardsSwip';
 import CumpleañosModal from '@/components/cumpleaños/CumpleañosModal';
 import ImageOverlay from '@/components/ui/ImageOverlay';
-import LastHeading from '@/components/home/LastHeading';
 import cumpleanosIcon from '@/assets/images/cumpleanos-icon.svg';
 import birthdayOverlay from '@/assets/images/birthday-overlay.svg';
 
@@ -95,7 +94,6 @@ const CumpleañosClient: React.FC = () => {
           onButtonClick={openModal}
         />
        
-        <LastHeading />
       </div>
     </>
   );

@@ -4,7 +4,6 @@ import styles from "./ShowcaseActivityCard.module.css";
 
 interface ShowcaseActivityCardProps {
   title: string;
-  des: string;
   level: string;
   age: string;
   duration: string;
@@ -12,17 +11,11 @@ interface ShowcaseActivityCardProps {
   link: string;
   image: string;
   priorityImage?: boolean;
-}
-
-function formatHook(des: string) {
-  const trimmed = des.trim();
-  if (trimmed.length <= 100) return trimmed;
-  return `${trimmed.slice(0, 100).trim()}…`;
+  priceLabel?: string;
 }
 
 const ShowcaseActivityCard = ({
   title,
-  des,
   level,
   age,
   duration,
@@ -30,6 +23,7 @@ const ShowcaseActivityCard = ({
   link,
   image,
   priorityImage = false,
+  priceLabel = "Desde",
 }: ShowcaseActivityCardProps) => {
   const isLocalAsset = image.startsWith("/api/v1/assets/");
 
@@ -58,6 +52,8 @@ const ShowcaseActivityCard = ({
         <div className={styles.gradient} aria-hidden />
 
         <div className={styles.content}>
+          <h2 className={styles.title}>{title.trim()}</h2>
+
           <div className={styles.metaRow}>
             <span className={styles.metaTag}>
               Nivel <strong>{level}</strong>
@@ -70,12 +66,9 @@ const ShowcaseActivityCard = ({
             </span>
           </div>
 
-          <h2 className={styles.title}>{title.trim()}</h2>
-          <p className={styles.hook}>{formatHook(des)}</p>
-
           <div className={styles.footer}>
             <div className={styles.priceBlock}>
-              <span className={styles.priceLabel}>Desde</span>
+              <span className={styles.priceLabel}>{priceLabel}</span>
               <span className={styles.priceValue}>
                 {prize}
                 <span className={styles.priceCurrency}>€</span>

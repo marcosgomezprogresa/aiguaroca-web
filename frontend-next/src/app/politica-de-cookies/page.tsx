@@ -3,7 +3,6 @@
 import { IoCaretBackOutline } from 'react-icons/io5';
 import { useRouter } from 'next/navigation';
 import Heading from '@/components/ui/Heading';
-import LastHeading from '@/components/home/LastHeading';
 
 export default function CookiesPolicy() {
   const router = useRouter();
@@ -241,7 +240,6 @@ export default function CookiesPolicy() {
           Gestión de terceros.
         </p>
       </div>
-      <LastHeading />
     </>
   );
 }

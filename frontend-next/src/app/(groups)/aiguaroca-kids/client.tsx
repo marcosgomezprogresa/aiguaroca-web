@@ -5,7 +5,6 @@ import ActivityHero from '@/components/ui/ActivityHero';
 import AiguarocaKidsActivitySection from '@/components/aiguaroca-kids/AiguarocaKidsActivitySection';
 import AiguarocaKidsModal from '@/components/aiguaroca-kids/AiguarocaKidsModal';
 import ImageOverlay from '@/components/ui/ImageOverlay';
-import LastHeading from '@/components/home/LastHeading';
 import agiKidIcon from '@/assets/images/agi-kid.svg';
 import aiguarocaKidsImg from '@/assets/images/aiguaroca-kids.svg';
 import kidsOverlay from '@/assets/images/kids-overlay.svg';
@@ -150,7 +149,6 @@ const AiguarocaKidsClient: React.FC = () => {
         buttonText="Pregunta sobre actividades para los mas pequeños"
         onButtonClick={openModal}
       />
-      <LastHeading />
     </>
   );
 };

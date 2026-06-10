@@ -207,7 +207,6 @@ const RecommendClient = ({ excludeLink }: RecommendClientProps) => {
               >
                 <ShowcaseActivityCard
                   title={item.title}
-                  des={item.des}
                   level={item.level}
                   age={item.age}
                   duration={item.duration}

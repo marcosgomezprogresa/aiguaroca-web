@@ -30,7 +30,6 @@ const HomeActivitySectionV2 = () => {
             <ShowcaseActivityCard
               key={item.link}
               title={item.title}
-              des={item.des}
               level={item.level}
               age={item.age}
               duration={item.duration}

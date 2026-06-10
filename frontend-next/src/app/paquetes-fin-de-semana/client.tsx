@@ -5,7 +5,6 @@ import MultiWeekendHero from "@/components/multiAdventure/MultiWeekendHero";
 import MultiWeekendSection from "@/components/multiAdventure/MultiWeekendSection";
 import MultiWeekendModal from "@/components/multiAdventure/MultiWeekendModal";
 import ImageOverlay from "@/components/ui/ImageOverlay";
-import LastHeading from "@/components/home/LastHeading";
 import singleImg2 from "@/assets/images/single-activity-main.svg";
 import weekOverlay from "@/assets/images/week-overlay.svg";
 
@@ -62,7 +61,6 @@ export default function PaquetesFinDeSemanClient() {
         onButtonClick={openModal}
       />
 
-      <LastHeading />
     </>
   );
 }

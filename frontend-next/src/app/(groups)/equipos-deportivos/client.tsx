@@ -6,7 +6,6 @@ import EquiposDeportivosActivitySection from '@/components/equipos-deportivos/Eq
 import EquiposDeportivosModal from '@/components/equipos-deportivos/EquiposDeportivosModal';
 import ImageOverlay from '@/components/ui/ImageOverlay';
 import MultiActivity from '@/components/home/MultiActivity';
-import LastHeading from '@/components/home/LastHeading';
 import Recommend from '@/components/home/Recommend';
 import equiposDeportivosIcon from '@/assets/images/equipos-deportivos-icon.svg';
 import sportOverlay from '@/assets/images/sport-overlay.svg';
@@ -121,7 +120,6 @@ const EquiposDeportivosClient: React.FC = () => {
       />
       <MultiActivity />
       <Recommend />
-      <LastHeading />
     </>
   );
 };
