@@ -50,7 +50,7 @@ const MultiAdventureSection: React.FC<MultiAdventureSectionProps> = ({
   ];
 
   return (
-    <div className="grid lg:grid-cols-2 gap-16 mb-20">
+    <div className="grid lg:grid-cols-2 gap-16 mb-20 sr-stagger">
       {packs.map((pack, index) => (
         <MultiActivityCard
           key={index}

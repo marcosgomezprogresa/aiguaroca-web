@@ -8,7 +8,7 @@ import Heading from '@/components/ui/Heading';
 
 const AboutHero: React.FC = () => {
   return (
-    <div className="custom-container grid grid-cols-7 gap-10 py-10 lg:py-20">
+    <div className="custom-container grid grid-cols-7 gap-10 py-10 lg:py-20 sr-stagger">
       <div className="col-span-7 lg:col-span-4 space-y-10 w-full max-w-xl">
         <div className="space-y-3">
           <p className="text-xl font-semibold text-black">

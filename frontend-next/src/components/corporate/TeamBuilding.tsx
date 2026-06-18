@@ -34,12 +34,12 @@ const TeamBuilding: React.FC = () => {
   ];
 
   return (
-    <div className="custom-container bg-brand-300/10 flex flex-col items-center rounded-2xl md:px-28 py-10 gap-5 my-16">
+    <div className="custom-container bg-brand-300/10 flex flex-col items-center rounded-2xl md:px-28 py-10 gap-5 my-16 sr-reveal">
       <Heading
         className="font-medium"
         text="Beneficios del Team-Building"
       />
-      <div className="grid grid-rows-5 gap-5">
+      <div className="grid grid-rows-5 gap-5 sr-stagger w-full">
         {details.map((d, i) => (
           <div
             key={i}

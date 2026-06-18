@@ -135,7 +135,7 @@ const RecommendClient = ({ excludeLink }: RecommendClientProps) => {
       aria-labelledby="recommend-heading"
     >
       <div className="custom-container">
-        <header className={styles.header}>
+        <header className={`${styles.header} sr-reveal`}>
           <p className={homeStyles.sectionEyebrow}>Más experiencias</p>
           <h2 id="recommend-heading" className={homeStyles.sectionTitleCenter}>
             Recomendaciones top para ti

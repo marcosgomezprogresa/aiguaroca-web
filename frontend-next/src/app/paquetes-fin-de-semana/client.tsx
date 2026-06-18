@@ -45,7 +45,7 @@ export default function PaquetesFinDeSemanClient() {
       />
 
       <div className="custom-container space-y-10 lg:space-y-20">
-        <p className="font-medium text-3xl lg:text-5xl">
+        <p className="font-medium text-3xl lg:text-5xl sr-reveal">
           Packs Finde
           <br /> Alojamiento + Actividades
         </p>

@@ -15,7 +15,6 @@ const contactChannels = [
     href: "tel:649047282",
     external: false,
     highlight: true,
-    hint: "Línea principal de reservas",
   },
   {
     icon: FaPhoneFlip,
@@ -24,7 +23,6 @@ const contactChannels = [
     href: "tel:609261210",
     external: false,
     highlight: false,
-    hint: "Información general",
   },
   {
     icon: FaRegEnvelope,
@@ -33,7 +31,6 @@ const contactChannels = [
     href: "https://mail.google.com/mail/?view=cm&fs=1&to=info@aiguaroca.com",
     external: true,
     highlight: false,
-    hint: "Consultas detalladas",
   },
 ] as const;
 
@@ -64,51 +61,52 @@ const ContactDirectSection = () => {
   return (
     <section className={styles.section} aria-labelledby="contact-direct-title">
       <div className="custom-container">
-        <header className={styles.header}>
-          <p className={styles.eyebrow}>Atención directa</p>
-          <h2 id="contact-direct-title" className={styles.title}>
-            Llámanos o escríbenos
-          </h2>
-          <p className={styles.lead}>
-            Te orientamos sobre disponibilidad, edades y la actividad ideal para
-            tu grupo.
-          </p>
+        <div className={styles.panel}>
+          <header className={styles.panelHeader}>
+            <div className={styles.headerTop}>
+              <p className={styles.eyebrow}>Atención directa</p>
+              <h2 id="contact-direct-title" className={styles.title}>
+                Llámanos o escríbenos
+              </h2>
+            </div>
+            <div className={styles.trustRow} aria-label="Ventajas">
+              {trustPoints.map(({ icon: Icon, text }) => (
+                <span key={text} className={styles.trustPill}>
+                  <Icon className={styles.trustIcon} aria-hidden />
+                  {text}
+                </span>
+              ))}
+            </div>
+          </header>
 
-          <div className={styles.trustRow} aria-label="Ventajas">
-            {trustPoints.map(({ icon: Icon, text }) => (
-              <span key={text} className={styles.trustPill}>
-                <Icon className={styles.trustIcon} aria-hidden />
-                {text}
-              </span>
-            ))}
+          <div className={styles.channelList}>
+            {contactChannels.map(
+              ({ icon: Icon, label, value, href, external, highlight }) => (
+                <a
+                  key={label}
+                  href={href}
+                  {...(external
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
+                  className={`${styles.channelLink} ${
+                    highlight ? styles.channelLinkHighlight : ""
+                  }`}
+                >
+                  <span className={styles.channelIcon}>
+                    <Icon size={15} aria-hidden />
+                  </span>
+                  <span className={styles.channelMeta}>
+                    <span className={styles.channelLabel}>{label}</span>
+                    <span className={styles.channelSep} aria-hidden>
+                      ·
+                    </span>
+                    <span className={styles.channelValue}>{value}</span>
+                  </span>
+                  <ChevronIcon />
+                </a>
+              ),
+            )}
           </div>
-        </header>
-
-        <div className={styles.channelList}>
-          {contactChannels.map(
-            ({ icon: Icon, label, value, href, external, highlight, hint }) => (
-              <a
-                key={label}
-                href={href}
-                {...(external
-                  ? { target: "_blank", rel: "noopener noreferrer" }
-                  : {})}
-                className={`${styles.channelLink} ${
-                  highlight ? styles.channelLinkHighlight : ""
-                }`}
-              >
-                <span className={styles.channelIcon}>
-                  <Icon size={16} aria-hidden />
-                </span>
-                <span className={styles.channelBody}>
-                  <span className={styles.channelLabel}>{label}</span>
-                  <span className={styles.channelValue}>{value}</span>
-                  <span className={styles.channelHint}>{hint}</span>
-                </span>
-                <ChevronIcon />
-              </a>
-            ),
-          )}
         </div>
       </div>
     </section>

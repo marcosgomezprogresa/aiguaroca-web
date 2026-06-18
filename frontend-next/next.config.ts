@@ -88,31 +88,19 @@ const nextConfig: NextConfig = {
   // Avoid Next.js devtools segment explorer manifest errors in local dev (15.5.x)
   devIndicators: false,
 
-  webpack: (config, { dev }) => {
-    if (dev) {
-      const ignored = config.watchOptions?.ignored;
-      config.watchOptions = {
-        ...config.watchOptions,
-        ignored: [
-          ...(Array.isArray(ignored) ? ignored : ignored ? [ignored] : []),
-          "**/node_modules/**",
-          "**/.git/**",
-        ],
-      };
-    }
-    return config;
-  },
-
   // Production optimizations
   poweredByHeader: false,
 
   // SEO and Performance optimizations
-  experimental: isProduction
-    ? {
-        optimizeCss: true,
-        optimizePackageImports: ["react-icons", "swiper"],
-      }
-    : {},
+  experimental: {
+    devtoolSegmentExplorer: false,
+    ...(isProduction
+      ? {
+          optimizeCss: true,
+          optimizePackageImports: ["react-icons", "swiper"],
+        }
+      : {}),
+  },
 
   // Headers for SEO and security
   async headers() {

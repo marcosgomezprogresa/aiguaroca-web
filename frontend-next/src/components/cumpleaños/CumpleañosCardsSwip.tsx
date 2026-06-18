@@ -126,7 +126,7 @@ const CumpleañosCardsSwip: React.FC = () => {
   return (
     <div className="custom-container mt-10">
       <div className="w-full max-w-xl mx-auto space-y-20">
-        <p className="text-2xl px-2 font-medium leading-tight text-center text-neutral-800">
+        <p className="text-2xl px-2 font-medium leading-tight text-center text-neutral-800 sr-reveal">
           <span className="text-brand-400">4 razones</span> para pasar tu
           cumpleaños haciendo Actividades Multiaventura en Venta del Moro con{" "}
           <span className="font-semibold text-black">

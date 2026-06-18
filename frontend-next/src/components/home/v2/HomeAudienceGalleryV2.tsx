@@ -53,7 +53,7 @@ const HomeAudienceGalleryV2 = () => {
       aria-labelledby="home-audience-heading"
     >
       <div className="custom-container">
-        <header className="text-center">
+        <header className="sr-reveal text-center">
           <p className={`${styles.sectionEyebrow} ${styles.sectionEyebrowLight}`}>
             Para cada grupo
           </p>
@@ -69,14 +69,14 @@ const HomeAudienceGalleryV2 = () => {
           </p>
         </header>
 
-        <div className={styles.audienceGrid}>
+        <div className={`${styles.audienceGrid} sr-stagger`}>
           {AUDIENCE_TILES.map((tile) => (
             <AudienceTile
               key={tile.link}
               name={tile.name}
               image={tile.image}
               link={tile.link}
-              className={tile.className}
+              className={`${tile.className} min-h-[14rem] md:min-h-0 md:h-full`}
             />
           ))}
         </div>

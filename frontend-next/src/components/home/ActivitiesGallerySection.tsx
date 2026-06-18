@@ -20,7 +20,7 @@ const ActivitiesGallerySection: React.FC<ActivitiesGallerySectionProps> = ({
   const nextRef = useRef<HTMLButtonElement>(null);
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-10 gap-10 custom-container bg-[#FFF9ED] py-10">
+    <div className="custom-container grid grid-cols-1 gap-10 border-y border-neutral-200/60 bg-white py-10 lg:grid-cols-10">
       {/* Desktop Gallery */}
       <div className="lg:col-span-4 hidden lg:block">
         <div className="group w-full">

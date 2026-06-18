@@ -9,7 +9,7 @@ import Link from 'next/link';
 const AboutAdventure: React.FC = () => {
   return (
     <div className="bg-brand-100">
-      <div className="custom-container grid grid-cols-1 lg:grid-cols-2 gap-28 py-14">
+      <div className="custom-container grid grid-cols-1 lg:grid-cols-2 gap-28 py-14 sr-stagger">
         <div className="space-y-10 w-full max-w-lg">
           <div className="space-y-3">
             <p className="text-xl font-semibold text-brand-300">

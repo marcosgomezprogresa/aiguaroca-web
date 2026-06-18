@@ -127,7 +127,7 @@ const AiguarocaKidsClient: React.FC = () => {
         activityName="Nenes"
         priceLabel="Contactanos"
       />
-      <div className="custom-container h-72 lg:h-fit py-10 lg:py-20">
+      <div className="custom-container h-72 lg:h-fit py-10 lg:py-20 sr-reveal">
         <video
           src="/api/v1/videos/kids.mp4"
           autoPlay

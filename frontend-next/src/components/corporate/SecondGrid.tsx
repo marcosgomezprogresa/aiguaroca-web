@@ -15,7 +15,7 @@ const SecondGrid: React.FC = () => {
   ];
 
   return (
-    <div className="custom-container bg-[#FFF9ED] grid grid-cols-1 md:grid-cols-7 py-10 gap-10">
+    <div className="custom-container bg-[#FFF9ED] grid grid-cols-1 md:grid-cols-7 py-10 gap-10 sr-stagger">
       <div className="md:col-span-4 leading-relaxed space-y-5">
         <Heading
           className="font-medium w-full"

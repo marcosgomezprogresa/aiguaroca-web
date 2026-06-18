@@ -6,7 +6,7 @@ import img2 from '@/assets/images/thought-bubble.svg';
 
 const ThoughtSection: React.FC = () => {
   return (
-    <div className="custom-container grid grid-cols-1 lg:grid-cols-10 gap-5 lg:gap-10 mt-10 lg:mt-20">
+    <div className="custom-container grid grid-cols-1 lg:grid-cols-10 gap-5 lg:gap-10 mt-10 lg:mt-20 sr-stagger">
       <div className="col-span-1 lg:col-span-4">
         <img
           loading="eager"

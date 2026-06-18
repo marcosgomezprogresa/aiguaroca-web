@@ -145,7 +145,7 @@ const SingleActivityHero: React.FC<SingleActivityHeroProps> = ({
       </div>
 
       {/* Content */}
-      <div className="space-y-8">
+      <div className="space-y-8 sr-reveal">
         <Heading className="font-medium" text={heading} />
         <p className="text-2xl lg:text-4xl font-semibold text-brand-300">
           {title}

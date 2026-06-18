@@ -20,7 +20,7 @@ const DespedidasActivitySection: React.FC<DespedidasActivitySectionProps> = ({
 
   return (
     <div className="custom-container py-20 space-y-16">
-      <div className="font-medium">
+      <div className="font-medium sr-reveal">
         <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-900 mb-2">
           Actividades recomendadas
         </h3>
@@ -28,7 +28,7 @@ const DespedidasActivitySection: React.FC<DespedidasActivitySectionProps> = ({
           para Despedidas
         </h3>
       </div>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 sr-stagger">
         {sectionActivities.map((itm, idx) => (
             <ActivityCard
               key={idx}

@@ -157,7 +157,7 @@ const MultiAdventureHero: React.FC<MultiAdventureHeroProps> = ({
       </div>
 
       {/* Content Grid */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sr-reveal">
         <div className="col-span-2 space-y-8 text-lg lg:text-xl max-w-2xl">
           <Heading className={"font-medium"} text={heading} level={1} />
           {des}

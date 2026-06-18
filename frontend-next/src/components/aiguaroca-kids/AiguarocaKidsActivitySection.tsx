@@ -19,7 +19,7 @@ const AiguarocaKidsActivitySection: React.FC<AiguarocaKidsActivitySectionProps> 
 
   return (
     <div className="custom-container py-20 space-y-16">
-      <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-0 lg:text-start items-center">
+      <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-0 lg:text-start items-center sr-reveal">
         <div className="font-medium flex flex-col items-center lg:items-start gap-2">
           <h3 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-900">
             Actividades recomendadas
@@ -33,7 +33,7 @@ const AiguarocaKidsActivitySection: React.FC<AiguarocaKidsActivitySectionProps> 
           <br /> HASTA 14 AÑOS
         </p>
       </div>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 sr-stagger">
         {filteredActivities.map((itm, idx) => (
           <ActivityCard
             key={idx}

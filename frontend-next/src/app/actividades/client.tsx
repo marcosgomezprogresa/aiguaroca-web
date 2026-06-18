@@ -30,7 +30,7 @@ const ActivitiesPageClient: React.FC = () => {
 
       {/* Activities Grid */}
       <div className="custom-container py-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-10 sr-stagger">
           {allActivitiesData.map((activity, idx) => (
             <ActivityCard
               key={idx}

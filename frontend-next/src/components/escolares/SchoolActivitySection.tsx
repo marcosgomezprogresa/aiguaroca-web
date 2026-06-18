@@ -23,7 +23,7 @@ const SchoolActivitySection: React.FC<SchoolActivitySectionProps> = ({
   openModal,
 }) => {
   return (
-    <div className="custom-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 py-8 lg:py-16">
+    <div className="custom-container grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-20 py-8 lg:py-16 sr-stagger">
       {arr.map((item, index) => (
         <TripCard
           openModal={openModal}

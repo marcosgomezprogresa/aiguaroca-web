@@ -32,7 +32,7 @@ const ImageOverlay: React.FC<ImageOverlayProps> = ({
       <div className="absolute inset-0 bg-black/40"></div>
 
       {/* Content */}
-      <div className="relative z-10 custom-container text-center space-y-6 lg:space-y-10">
+      <div className="relative z-10 custom-container text-center space-y-6 lg:space-y-10 sr-reveal">
         <h2 className="text-3xl lg:text-5xl xl:text-6xl font-bold text-white leading-tight max-w-4xl mx-auto">
           {title}
         </h2>

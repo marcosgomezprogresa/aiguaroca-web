@@ -57,7 +57,7 @@ export default function DiaMultiaventuraClient() {
       />
 
       <div className="custom-container space-y-10 lg:space-y-20">
-        <p className="font-medium text-3xl lg:text-5xl">Packs 2 Actividades</p>
+        <p className="font-medium text-3xl lg:text-5xl sr-reveal">Packs 2 Actividades</p>
         <MultiAdventureSection openModal={openModal} />
       </div>
 

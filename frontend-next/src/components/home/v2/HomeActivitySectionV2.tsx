@@ -14,7 +14,7 @@ const HomeActivitySectionV2 = () => {
       aria-labelledby="home-activities-heading"
     >
       <div className="custom-container">
-        <header className="text-center">
+        <header className="sr-reveal text-center">
           <p className={styles.sectionEyebrow}>Experiencias Aiguaroca</p>
           <h2 id="home-activities-heading" className={styles.sectionTitleCenter}>
             Actividades que definen tu día de aventura
@@ -25,7 +25,9 @@ const HomeActivitySectionV2 = () => {
           </p>
         </header>
 
-        <div className={`${styles.activityGrid} ${styles.activityGridFeatured}`}>
+        <div
+          className={`${styles.activityGrid} ${styles.activityGridFeatured} sr-stagger`}
+        >
           {activities.map((item, idx) => (
             <ShowcaseActivityCard
               key={item.link}

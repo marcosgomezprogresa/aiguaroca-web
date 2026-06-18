@@ -305,7 +305,7 @@ const ActivityHero: React.FC<ActivityHeroProps> = ({
 
       {/* Activity Details (Level, Age, Duration) */}
       {(level || age || duration) && (
-        <div className="grid gap-3 text-sm lg:grid-cols-3 lg:text-lg">
+        <div className="grid gap-3 text-sm lg:grid-cols-3 lg:text-lg sr-stagger">
           {level && (
             <div className="align-center gap-4 rounded-2xl bg-brand-100 px-4 py-3">
               <FaSignal className="text-brand-500" />
@@ -342,7 +342,7 @@ const ActivityHero: React.FC<ActivityHeroProps> = ({
       )}
 
       {/* Main Content Grid */}
-      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
+      <div className="grid grid-cols-1 gap-8 lg:grid-cols-3 sr-reveal">
         <div className="col-span-2 space-y-8 lg:text-lg max-w-5xl">
           {subHeading && (
             <p className="font-medium text-brand-300">{subHeading}</p>
@@ -352,28 +352,6 @@ const ActivityHero: React.FC<ActivityHeroProps> = ({
           ) : (
             <div className="text-3xl lg:text-4xl xl:text-5xl font-bold text-neutral-900 leading-tight">
               {heading}
-            </div>
-          )}
-
-          {/* Equipment Included */}
-          {include && include.length > 0 && (
-            <div className="space-y-4">
-              <p className="text-brand-300 font-medium">
-                Material técnico incluido
-              </p>
-              <div className="flex flex-col lg:flex-row gap-3 lg:gap-10">
-                {include.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className="align-center w-fit gap-3 text-lg lg:text-2xl text-brand-500"
-                  >
-                    <div className="w-11 h-11 bg-brand-300/50 rounded-full overflow-hidden center">
-                      {item.icon}
-                    </div>
-                    <p>{item.name}</p>
-                  </div>
-                ))}
-              </div>
             </div>
           )}
 

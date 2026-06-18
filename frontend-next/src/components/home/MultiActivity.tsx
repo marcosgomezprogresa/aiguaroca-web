@@ -47,12 +47,14 @@ const MultiActivity = ({ headingText = "Paquetes Multiaventura en Valencia" }: {
 
   return (
     <div className="custom-container py-12 lg:py-24 space-y-8">
-      <Heading
-        className="font-medium text-xl lg:text-2xl"
-        text={headingText}
-        level={2}
-      />
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="sr-reveal">
+        <Heading
+          className="font-medium text-xl lg:text-2xl"
+          text={headingText}
+          level={2}
+        />
+      </div>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 sr-stagger">
         {cardsArr.map((item, index) => (
           <Link href={item.link} key={index} className="space-y-5">
             <div className="rounded-3xl overflow-hidden relative">

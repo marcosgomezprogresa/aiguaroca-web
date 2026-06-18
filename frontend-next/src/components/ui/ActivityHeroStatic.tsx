@@ -170,9 +170,9 @@ const ActivityHeroStatic = ({
       </section>
 
       {(level || age || duration || Prize) && (
-        <section className={styles.stats} aria-label="Datos de la actividad">
+        <section className={`${styles.stats} sr-reveal`} aria-label="Datos de la actividad">
           <div className="custom-container">
-            <div className={styles.statsGrid}>
+            <div className={`${styles.statsGrid} sr-stagger`}>
               {level && (
                 <div className={styles.statItem}>
                   <span className={styles.statLabel}>Nivel</span>
@@ -210,24 +210,47 @@ const ActivityHeroStatic = ({
       )}
 
       {secondaryMedia.length > 0 && (
-        <section className={styles.gallery} aria-label="Galería">
+        <section className={`${styles.gallery} sr-reveal`} aria-label="Galería">
           <div className="custom-container">
-            <div className={styles.galleryGrid}>
+            <div
+              className={styles.galleryTrack}
+              tabIndex={secondaryMedia.length > 1 ? 0 : undefined}
+              aria-label={
+                secondaryMedia.length > 1
+                  ? "Galería de fotos. Desliza horizontalmente."
+                  : undefined
+              }
+            >
               {secondaryMedia.map((item, idx) => (
-                <div key={idx} className={styles.galleryItem}>
-                  <Image
-                    src={item.file}
-                    alt={`${activityName} — imagen ${idx + 2}`}
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className={styles.galleryImage}
-                    loading="lazy"
-                    quality={90}
-                    unoptimized={isLocalAsset(item.file)}
-                  />
-                </div>
+                <figure key={`${item.file}-${idx}`} className={styles.gallerySlide}>
+                  {item.type === "vid" ? (
+                    <video
+                      src={item.file}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      preload="metadata"
+                      className={styles.galleryVideo}
+                    />
+                  ) : (
+                    <Image
+                      src={item.file}
+                      alt={`${activityName} — imagen ${idx + 2}`}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 640px"
+                      className={styles.galleryImage}
+                      loading="lazy"
+                      quality={90}
+                      unoptimized={isLocalAsset(item.file)}
+                    />
+                  )}
+                </figure>
               ))}
             </div>
+            {secondaryMedia.length > 1 && (
+              <p className={styles.galleryHint}>Desliza para ver más fotos</p>
+            )}
           </div>
         </section>
       )}
@@ -235,29 +258,14 @@ const ActivityHeroStatic = ({
       <div className={styles.body}>
         <div className="custom-container">
           <div className={styles.bodyInner}>
-            {include && include.length > 0 && (
-              <section aria-label="Material incluido">
-                <p className={styles.sectionEyebrow}>Incluido</p>
-                <h2 className={styles.sectionHeading}>Material técnico incluido</h2>
-                <div className={styles.includeGrid}>
-                  {include.map((item, idx) => (
-                    <div key={idx} className={styles.includeItem}>
-                      <span className={styles.includeIcon}>{item.icon}</span>
-                      <span>{item.name}</span>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
-
             {beforeSubtitle && (
-              <section className={styles.beforeSubtitle}>{beforeSubtitle}</section>
+              <section className={`${styles.beforeSubtitle} sr-reveal`}>{beforeSubtitle}</section>
             )}
           </div>
 
           {faq && faq.length > 0 && (
-            <section className={styles.infoSection} aria-label="Información y reserva">
-              <div className={styles.infoGrid}>
+            <section className={`${styles.infoSection} sr-reveal`} aria-label="Información y reserva">
+              <div className={`${styles.infoGrid} sr-stagger`}>
                 <div className={styles.faqColumn}>
                   <h2 className={styles.faqTitle}>Información sobre la actividad</h2>
                   <FAQ data={faq} />
@@ -273,7 +281,7 @@ const ActivityHeroStatic = ({
           )}
 
           <div className={styles.bodyInner}>
-            <section aria-label="Descripción">
+            <section className="sr-reveal" aria-label="Descripción">
               {subTitle && (
                 <p className={styles.sectionEyebrow}>{subTitle}</p>
               )}

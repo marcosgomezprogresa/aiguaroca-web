@@ -32,7 +32,7 @@ const AboutGallery: React.FC = () => {
   ];
 
   return (
-    <div className="custom-container grid grid-cols-1 lg:grid-cols-3 gap-12 my-20">
+    <div className="custom-container grid grid-cols-1 lg:grid-cols-3 gap-12 my-20 sr-stagger">
       {card.map((item, idx) => (
         <div key={idx} className="space-y-5">
           <div className="relative">

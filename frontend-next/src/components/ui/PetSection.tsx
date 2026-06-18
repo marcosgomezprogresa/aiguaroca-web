@@ -9,7 +9,7 @@ import dog from "@/assets/images/dog.svg";
 
 const PetSection = () => {
   return (
-    <div className="custom-container bg-[#FFF9ED] grid grid-cols-1 lg:grid-cols-10 gap-5 lg:gap-10 pt-10 mb-10">
+    <div className="custom-container mb-10 grid grid-cols-1 gap-5 border-y border-neutral-200/60 bg-white pt-10 lg:grid-cols-10 lg:gap-10">
       <div className="hidden lg:block lg:col-span-4">
         <Image
           src={dog}

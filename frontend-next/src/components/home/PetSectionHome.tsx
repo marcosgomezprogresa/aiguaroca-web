@@ -9,8 +9,8 @@ import dog from "@/assets/images/dog.svg";
 const PetSectionHome = () => {
   return (
 
-    <div className="mt-12 lg:mt-16">
-      <div className="mx-auto max-w-[1370px] bg-[#FFF9ED] rounded-xl px-6 sm:px-10 lg:px-14 py-6 lg:py-8">
+    <div className="sr-reveal mt-12 lg:mt-16">
+      <div className="mx-auto max-w-[1370px] rounded-xl border border-neutral-200/70 bg-white px-6 sm:px-10 lg:px-14 py-6 lg:py-8 shadow-[0_4px_24px_rgba(0,40,55,0.04)]">
         <div className="grid grid-cols-1 lg:grid-cols-10 gap-6 lg:gap-10 py-8 lg:py-10">
           <div className="hidden lg:flex lg:col-span-4 items-center">
             <div className="mx-auto w-full max-w-sm overflow-hidden rounded-xl">
@@ -27,12 +27,12 @@ const PetSectionHome = () => {
           <div className="col-span-1 lg:col-span-5 lg:col-start-6 space-y-5 lg:space-y-6">
             <Image
               src={paw}
-              alt="Paw"
+              alt="Dog friendly Aiguaroca"
               width={144}
               height={144}
-              className="w-10 lg:w-14 opacity-90"
+              className="w-20 sm:w-24 lg:w-32 opacity-95"
             />
-            <h2 className="text-sm uppercase tracking-wide text-brand-300 text-[black] text-center">
+            <h2 className="text-sm uppercase tracking-wide text-brand-500 text-center font-semibold">
               Aventura con tu perro
             </h2>
             <div className="lg:hidden">
@@ -56,7 +56,7 @@ const PetSectionHome = () => {
             </p>
 
             <Link href="/contacto">
-              <Button className="px-4 py-2 text-sm lg:text-base font-medium text-gray-800 bg-gray-100 hover:bg-gray-200 rounded-xl transition-colors">
+              <Button className="px-4 py-2 text-sm lg:text-base font-medium text-brand-500 bg-white border border-brand-200/60 hover:bg-brand-100 rounded-xl transition-colors shadow-sm">
                 ¿Qué aventuras puedo hacer con mi perro?
               </Button>
             </Link>

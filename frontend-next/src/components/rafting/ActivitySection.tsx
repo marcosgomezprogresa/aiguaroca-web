@@ -19,9 +19,9 @@ const ActivitySection = ({
   );
 
   return (
-    <section className={homeStyles.sectionBlock} aria-label="Actividades relacionadas">
+    <section className={`${homeStyles.sectionBlock} sr-reveal`} aria-label="Actividades relacionadas">
       <div className="custom-container">
-        <div className={styles.grid}>
+        <div className={`${styles.grid} sr-stagger`}>
           {sectionActivities.map((itm, idx) => (
             <ShowcaseActivityCard
               key={itm.link}

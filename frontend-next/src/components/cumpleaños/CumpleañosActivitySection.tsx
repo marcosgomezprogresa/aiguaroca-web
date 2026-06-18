@@ -20,7 +20,7 @@ const CumpleañosActivitySection: React.FC<CumpleañosActivitySectionProps> = ({
 
   return (
     <div className="custom-container py-20 space-y-16">
-      <div className="font-medium">
+      <div className="font-medium sr-reveal">
         <h3 className=" text-xl md:text-4xl  text-neutral-900 mb-2">
           Actividades recomendadas
         </h3>
@@ -28,7 +28,7 @@ const CumpleañosActivitySection: React.FC<CumpleañosActivitySectionProps> = ({
           para Celebraciones
         </h3>
       </div>
-      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10">
+      <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-10 sr-stagger">
         {sectionActivities.map((itm, idx) => (
           <ActivityCard
             key={idx}
