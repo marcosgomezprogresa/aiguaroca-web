@@ -1,10 +1,15 @@
 "use client";
 
 import { HiMiniBars3 } from "react-icons/hi2";
+import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
 import Button from "@/components/ui/Button";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
+
+const WHATSAPP_URL = "https://wa.me/+34649047282";
+const PHONE_URL = "tel:649047282";
+const PHONE_DISPLAY = "649 047 282";
 
 const Slider = dynamic(() => import("./Slider"), {
   ssr: false,
@@ -37,10 +42,29 @@ const Navbar = () => {
               decoding="async"
             />
           </Link>
-          <div className="align-center gap-4">
+          <div className="align-center gap-2 sm:gap-3 lg:gap-4">
+            <a
+              href={PHONE_URL}
+              className="navbar-contact-link"
+              aria-label={`Llamar al ${PHONE_DISPLAY}`}
+            >
+              <FaPhoneAlt size={14} className="shrink-0" />
+              <span className="hidden md:inline">{PHONE_DISPLAY}</span>
+            </a>
+            <a
+              href={WHATSAPP_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              referrerPolicy="no-referrer"
+              className="navbar-contact-link"
+              aria-label={`Contactar por WhatsApp al ${PHONE_DISPLAY}`}
+            >
+              <FaWhatsapp size={16} className="shrink-0 text-[#25D366]" />
+              <span className="hidden md:inline">{PHONE_DISPLAY}</span>
+            </a>
             <Link
               href="/contacto"
-              className="button w-28 h-11 cursor-pointer center rounded-2xl"
+              className="button w-[5.5rem] h-9 text-sm cursor-pointer center rounded-2xl"
             >
               Contacto
             </Link>

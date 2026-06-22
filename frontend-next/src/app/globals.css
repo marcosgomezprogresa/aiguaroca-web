@@ -69,6 +69,10 @@
     @apply cursor-pointer w-10 h-10 rounded-full shadow-md border border-neutral-100;
   }
 
+  .navbar-contact-link {
+    @apply align-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-1000 hover:text-brand-400 transition-colors;
+  }
+
   .custom-container {
     @apply w-full px-5 lg:px-24 max-w-[1550px] mx-auto;
   }
