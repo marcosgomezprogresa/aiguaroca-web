@@ -70,7 +70,7 @@
   }
 
   .navbar-contact-link {
-    @apply align-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-1000 hover:text-brand-400 transition-colors;
+    @apply flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-neutral-1000 hover:text-brand-400 transition-colors;
   }
 
   .custom-container {
