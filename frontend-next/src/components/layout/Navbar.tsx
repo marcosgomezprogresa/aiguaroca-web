@@ -2,7 +2,6 @@
 
 import { HiMiniBars3 } from "react-icons/hi2";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
-import Button from "@/components/ui/Button";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
@@ -10,6 +9,7 @@ import dynamic from "next/dynamic";
 const WHATSAPP_URL = "https://wa.me/+34649047282";
 const PHONE_URL = "tel:649047282";
 const PHONE_DISPLAY = "649 047 282";
+const NAVBAR_ICON_SIZE = 22;
 
 const Slider = dynamic(() => import("./Slider"), {
   ssr: false,
@@ -48,7 +48,7 @@ const Navbar = () => {
               className="navbar-contact-link"
               aria-label={`Llamar al ${PHONE_DISPLAY}`}
             >
-              <FaPhoneAlt size={14} className="shrink-0" />
+              <FaPhoneAlt size={NAVBAR_ICON_SIZE} className="shrink-0" />
               <span className="hidden md:inline">{PHONE_DISPLAY}</span>
             </a>
             <a
@@ -59,16 +59,18 @@ const Navbar = () => {
               className="navbar-contact-link"
               aria-label={`Contactar por WhatsApp al ${PHONE_DISPLAY}`}
             >
-              <FaWhatsapp size={16} className="shrink-0 text-[#25D366]" />
+              <FaWhatsapp size={NAVBAR_ICON_SIZE} className="shrink-0 text-[#25D366]" />
               <span className="hidden md:inline">{PHONE_DISPLAY}</span>
             </a>
-            <Button
+            <button
+              type="button"
               onClick={handleOpen}
               disabled={open}
-              className="navbar-side-button bg-white text-black center"
+              className="navbar-menu-button"
+              aria-label="Abrir menú"
             >
-              <HiMiniBars3 size={22} />
-            </Button>
+              <HiMiniBars3 size={NAVBAR_ICON_SIZE} />
+            </button>
           </div>
         </div>
       </div>
