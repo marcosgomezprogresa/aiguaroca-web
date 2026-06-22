@@ -42,7 +42,7 @@ const Navbar = () => {
               decoding="async"
             />
           </Link>
-          <div className="align-center gap-2 sm:gap-3 lg:gap-4">
+          <div className="align-center gap-3 sm:gap-4 lg:gap-5 ml-auto">
             <a
               href={PHONE_URL}
               className="navbar-contact-link"
@@ -62,12 +62,6 @@ const Navbar = () => {
               <FaWhatsapp size={16} className="shrink-0 text-[#25D366]" />
               <span className="hidden md:inline">{PHONE_DISPLAY}</span>
             </a>
-            <Link
-              href="/contacto"
-              className="button w-[5.5rem] h-9 text-sm cursor-pointer center rounded-2xl"
-            >
-              Contacto
-            </Link>
             <Button
               onClick={handleOpen}
               disabled={open}
