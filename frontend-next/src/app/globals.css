@@ -58,11 +58,11 @@
   }
 
   .logo {
-    @apply w-[30dvw] sm:w-[40dvw] lg:w-80 object-contain;
+    @apply h-[5.5rem] sm:h-24 lg:h-32 w-auto max-w-[20rem] sm:max-w-[22rem] lg:max-w-[28rem] object-contain object-left;
   }
 
   .navbar-container {
-    @apply relative z-10 px-4 lg:px-16 py-6 shadow-xl bg-white;
+    @apply relative z-10 px-4 lg:px-16 py-3 lg:py-4 shadow-xl bg-white;
   }
 
   .navbar-side-button {

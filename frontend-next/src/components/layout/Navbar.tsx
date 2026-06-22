@@ -30,7 +30,7 @@ const Navbar = () => {
         <div className="space-between max-w-[1550px] mx-auto">
           <Link href="/" className="cursor-pointer">
             <img
-              src="/api/v1/assets/Logo.png"
+              src="/api/v1/assets/Logo2.png"
               alt="Aiguaroca Logo"
               className="logo cursor-pointer"
               loading="eager"
