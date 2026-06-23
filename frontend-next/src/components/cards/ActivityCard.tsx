@@ -128,7 +128,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col gap-2 p-4 sm:p-4">
+      <div className="flex flex-1 flex-col gap-1.5 p-4 sm:p-4">
         <div className="space-y-2">
           {isKid && (
             <span className="inline-flex rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-600 ring-1 ring-brand-100">
@@ -178,21 +178,21 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
             <span className={styles.metaLabel}>Duración</span>
             <span className={styles.metaValue}>{formattedDuration}</span>
           </div>
-        </div>
 
-        <div className={styles.priceRow}>
-          <Link
-            href={bookingHref}
-            className={`${styles.priceBadge} ${priceTapped ? styles.priceBadgeTapped : ""}`}
-            aria-label={`Reservar ${title.trim()} desde ${prize} euros`}
-            prefetch
-            onMouseEnter={prefetchBooking}
-            onFocus={prefetchBooking}
-            onTouchStart={handlePriceTouchStart}
-          >
-            <span className={styles.priceAmount}>{prize}</span>
-            <span className={styles.priceCurrency}>€</span>
-          </Link>
+          <div className={styles.priceRow}>
+            <Link
+              href={bookingHref}
+              className={`${styles.priceBadge} ${priceTapped ? styles.priceBadgeTapped : ""}`}
+              aria-label={`Reservar ${title.trim()} desde ${prize} euros`}
+              prefetch
+              onMouseEnter={prefetchBooking}
+              onFocus={prefetchBooking}
+              onTouchStart={handlePriceTouchStart}
+            >
+              <span className={styles.priceAmount}>{prize}</span>
+              <span className={styles.priceCurrency}>€</span>
+            </Link>
+          </div>
         </div>
       </div>
     </article>
