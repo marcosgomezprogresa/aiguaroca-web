@@ -4,8 +4,8 @@ import HomeHeroText from "./HomeHeroText";
 const HomeHero = () => {
   return (
     <div className="custom-container flex flex-col-reverse gap-4 py-4 sm:grid sm:grid-cols-3 sm:gap-0">
-      <div className="col-span-2 flex items-center">
-        <HomeHeroText />
+      <div className="col-span-2 flex w-full items-center">
+        <HomeHeroText className="w-full" />
       </div>
 
       <div className="flex flex-col justify-center items-end gap-8 py-4 lg:py-12">

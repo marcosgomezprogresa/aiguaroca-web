@@ -8,13 +8,10 @@ interface HomeHeroTextProps {
 }
 
 const HomeHeroText = ({ className = "", align = "left" }: HomeHeroTextProps) => {
-  const alignClass =
-    align === "center"
-      ? "text-center"
-      : "text-center sm:text-left";
+  const alignClass = align === "center" ? "text-center" : "text-left";
 
   return (
-    <div className={`space-y-5 max-w-xl ${alignClass} ${className}`}>
+    <div className={`w-full space-y-5 ${alignClass} ${className}`}>
       <h1 className="text-sm sm:text-base font-black uppercase tracking-[0.3em] text-black">
         Aventura Valencia
       </h1>
@@ -25,7 +22,7 @@ const HomeHeroText = ({ className = "", align = "left" }: HomeHeroTextProps) => 
         className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight text-gray-900"
       />
 
-      <p className="max-w-lg text-base sm:text-lg text-left text-balance text-gray-600">
+      <p className="w-full text-base sm:text-lg text-gray-600">
         Vive experiencias de multiaventura en Valencia al aire libre, con actividades
         diseñadas para disfrutar, superar límites y conectar con la naturaleza.
       </p>
