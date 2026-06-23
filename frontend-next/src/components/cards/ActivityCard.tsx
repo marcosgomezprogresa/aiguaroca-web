@@ -173,26 +173,26 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
             <span className={styles.metaValue}>{formattedAge}</span>
           </div>
 
-          <div className={styles.metaFooter}>
-            <div className={`${styles.metaRow} ${styles.metaRowInline}`}>
-              <BsClockFill className={styles.metaIcon} aria-hidden />
-              <span className={styles.metaLabel}>Duración</span>
-              <span className={styles.metaValue}>{formattedDuration}</span>
-            </div>
-
-            <Link
-              href={bookingHref}
-              className={`${styles.priceBadge} ${priceTapped ? styles.priceBadgeTapped : ""}`}
-              aria-label={`Reservar ${title.trim()} desde ${prize} euros`}
-              prefetch
-              onMouseEnter={prefetchBooking}
-              onFocus={prefetchBooking}
-              onTouchStart={handlePriceTouchStart}
-            >
-              <span className={styles.priceAmount}>{prize}</span>
-              <span className={styles.priceCurrency}>€</span>
-            </Link>
+          <div className={styles.metaRow}>
+            <BsClockFill className={styles.metaIcon} aria-hidden />
+            <span className={styles.metaLabel}>Duración</span>
+            <span className={styles.metaValue}>{formattedDuration}</span>
           </div>
+        </div>
+
+        <div className={styles.priceRow}>
+          <Link
+            href={bookingHref}
+            className={`${styles.priceBadge} ${priceTapped ? styles.priceBadgeTapped : ""}`}
+            aria-label={`Reservar ${title.trim()} desde ${prize} euros`}
+            prefetch
+            onMouseEnter={prefetchBooking}
+            onFocus={prefetchBooking}
+            onTouchStart={handlePriceTouchStart}
+          >
+            <span className={styles.priceAmount}>{prize}</span>
+            <span className={styles.priceCurrency}>€</span>
+          </Link>
         </div>
       </div>
     </article>

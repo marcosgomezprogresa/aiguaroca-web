@@ -2,8 +2,8 @@
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
-  padding: 0.5rem 0.625rem;
+  gap: 0.28rem;
+  padding: 0.45rem 0.625rem;
   border-radius: 0.75rem;
   background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
   border: 1px solid #efefef;
@@ -13,12 +13,7 @@
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  min-height: 1.375rem;
-  min-width: 0;
-}
-
-.metaRowInline {
-  flex: 1;
+  min-height: 1.25rem;
   min-width: 0;
 }
 
@@ -31,7 +26,7 @@
 
 .metaLabel {
   flex-shrink: 0;
-  width: 3.75rem;
+  width: 4.25rem;
   font-size: 0.75rem;
   font-weight: 700;
   line-height: 1.1;
@@ -66,12 +61,12 @@
   transition: width 0.4s ease;
 }
 
-.metaFooter {
+.priceRow {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.5rem;
-  padding-top: 0.1rem;
+  justify-content: flex-end;
+  margin-top: 0.3rem;
+  padding-top: 0.35rem;
+  border-top: 1px solid #f0f0f0;
 }
 
 .priceBadge {
@@ -79,7 +74,7 @@
   flex-shrink: 0;
   align-items: baseline;
   gap: 0.125rem;
-  padding: 0.55rem 1.1rem;
+  padding: 0.45rem 1rem;
   border-radius: 9999px;
   background: linear-gradient(
     125deg,
