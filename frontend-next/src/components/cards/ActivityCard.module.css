@@ -2,14 +2,18 @@
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-  padding-top: 0.25rem;
+  gap: 0.3rem;
+  padding: 0.5rem 0.625rem;
+  border-radius: 0.75rem;
+  background: linear-gradient(180deg, #fafafa 0%, #ffffff 100%);
+  border: 1px solid #efefef;
 }
 
 .metaRow {
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.45rem;
+  min-height: 1.375rem;
   min-width: 0;
 }
 
@@ -20,35 +24,38 @@
 
 .metaIcon {
   flex-shrink: 0;
-  width: 1rem;
-  height: 1rem;
+  width: 0.8rem;
+  height: 0.8rem;
   color: #007bb6;
 }
 
 .metaLabel {
   flex-shrink: 0;
-  font-size: 0.875rem;
+  width: 3.75rem;
+  font-size: 0.75rem;
   font-weight: 700;
-  color: #171717;
+  line-height: 1.1;
+  color: #262626;
 }
 
 .metaValue {
   margin-left: auto;
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  color: #404040;
+  line-height: 1.1;
+  color: #525252;
   white-space: nowrap;
 }
 
 .levelTrack {
   position: relative;
-  width: 4.5rem;
-  height: 0.45rem;
+  width: 3.25rem;
+  height: 0.3rem;
   flex-shrink: 0;
   overflow: hidden;
   border-radius: 9999px;
-  background: #f1f1f1;
-  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
+  background: #ececec;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.05);
 }
 
 .levelFill {
@@ -63,7 +70,8 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  padding-top: 0.1rem;
 }
 
 .priceBadge {

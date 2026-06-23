@@ -128,7 +128,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
         </div>
       </Link>
 
-      <div className="flex flex-1 flex-col gap-4 p-4 sm:p-5">
+      <div className="flex flex-1 flex-col gap-2 p-4 sm:p-4">
         <div className="space-y-2">
           {isKid && (
             <span className="inline-flex rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-600 ring-1 ring-brand-100">
