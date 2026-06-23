@@ -6,11 +6,11 @@ import { Suspense } from "react";
 import HomeGridGallerySkeleton from "@/components/skeletons/HomeGridGallerySkeleton";
 import SectionSkeleton from "@/components/skeletons/SectionSkeleton";
 
-import HomeHeroV2 from "@/components/home/v2/HomeHeroV2";
-import HomeHighlightsBar from "@/components/home/v2/HomeHighlightsBar";
-import HomeActivitySectionV2 from "@/components/home/v2/HomeActivitySectionV2";
-import AsyncHomeAudienceGalleryV2 from "@/components/home/v2/AsyncHomeAudienceGalleryV2";
+import HomeHero from "@/components/home/HomeHero";
+import HomeActivitySection from "@/components/home/HomeActivitySection";
+import AsyncHomeGridGallery from "@/components/home/AsyncHomeGridGallery";
 import AsyncPetSectionHome from "@/components/home/AsyncPetSectionHome";
+import NaturalEnvironmentSection from "@/components/home/NaturalEnvironmentSection";
 import AsyncHomeBrandSection from "@/components/home/AsyncHomeBrandSection";
 
 export const metadata: Metadata = getSEOConfig("/").metadata;
@@ -31,22 +31,22 @@ export default function HomePage() {
         />
       )}
 
-      <HomeHeroV2 />
-      <HomeHighlightsBar />
-      <HomeActivitySectionV2 />
+      <HomeHero />
+      <HomeActivitySection />
 
       <Suspense fallback={<HomeGridGallerySkeleton />}>
-        <AsyncHomeAudienceGalleryV2 />
+        <AsyncHomeGridGallery />
       </Suspense>
 
       <Suspense fallback={<SectionSkeleton height="h-96" />}>
         <AsyncPetSectionHome />
       </Suspense>
 
+      <NaturalEnvironmentSection />
+
       <Suspense fallback={<SectionSkeleton height="h-96" />}>
         <AsyncHomeBrandSection />
       </Suspense>
-
     </>
   );
 }
