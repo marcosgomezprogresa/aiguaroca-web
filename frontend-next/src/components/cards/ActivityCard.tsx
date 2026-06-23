@@ -3,9 +3,6 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { FaSignal } from "react-icons/fa";
-import { RiUser3Fill } from "react-icons/ri";
-import { BsClockFill } from "react-icons/bs";
 import { useRoutePrefetch } from "@/hooks/useRoutePrefetch";
 import { getActivityBookingHref } from "@/lib/booking";
 import styles from "./ActivityCard.module.css";
@@ -25,20 +22,6 @@ interface ActivityCardProps {
   priceLabel?: string;
   priorityImage?: boolean;
 }
-
-const getLevelConfig = (level: string) => {
-  const normalized = level.toLowerCase();
-
-  if (normalized.includes("avanzado")) {
-    return { width: "w-[82%]", bar: "bg-brand-500" };
-  }
-
-  if (normalized.includes("medio")) {
-    return { width: "w-[58%]", bar: "bg-brand-400" };
-  }
-
-  return { width: "w-[34%]", bar: "bg-brand-300" };
-};
 
 function formatSeoTitle(title: string) {
   const clean = title.trim().replace(/\s+/g, " ");
@@ -74,7 +57,6 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
 
   const displayTitle = inHome ? title.trim() : formatSeoTitle(title);
   const bookingHref = getActivityBookingHref(title);
-  const levelConfig = getLevelConfig(level);
   const formattedAge = formatMetaValue(age);
   const formattedDuration = formatMetaValue(duration);
 
@@ -157,24 +139,16 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
 
         <div className={styles.metaSection}>
           <div className={styles.metaRow}>
-            <FaSignal className={styles.metaIcon} aria-hidden />
             <span className={styles.metaLabel}>Nivel</span>
-            <div className={styles.levelTrack}>
-              <div
-                className={`${styles.levelFill} ${levelConfig.bar} ${levelConfig.width}`}
-              />
-            </div>
             <span className={styles.metaValue}>{level}</span>
           </div>
 
           <div className={styles.metaRow}>
-            <RiUser3Fill className={styles.metaIcon} aria-hidden />
             <span className={styles.metaLabel}>Edad</span>
             <span className={styles.metaValue}>{formattedAge}</span>
           </div>
 
           <div className={styles.metaRow}>
-            <BsClockFill className={styles.metaIcon} aria-hidden />
             <span className={styles.metaLabel}>Duración</span>
             <span className={styles.metaValue}>{formattedDuration}</span>
           </div>
