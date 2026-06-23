@@ -25,7 +25,7 @@ const HomeHeroText = ({ className = "", align = "left" }: HomeHeroTextProps) => 
         className="text-2xl sm:text-3xl lg:text-4xl font-black leading-tight text-gray-900"
       />
 
-      <p className="text-base sm:text-lg text-gray-600 max-w-lg mx-auto sm:mx-0">
+      <p className="max-w-lg text-base sm:text-lg text-left text-balance text-gray-600">
         Vive experiencias de multiaventura en Valencia al aire libre, con actividades
         diseñadas para disfrutar, superar límites y conectar con la naturaleza.
       </p>
