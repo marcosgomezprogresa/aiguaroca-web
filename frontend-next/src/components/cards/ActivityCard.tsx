@@ -3,6 +3,9 @@
 import { useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { FaSignal } from "react-icons/fa";
+import { RiUser3Fill } from "react-icons/ri";
+import { BsClockFill } from "react-icons/bs";
 import { useRoutePrefetch } from "@/hooks/useRoutePrefetch";
 import { getActivityBookingHref } from "@/lib/booking";
 import styles from "./ActivityCard.module.css";
@@ -71,7 +74,9 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
   };
 
   return (
-    <article className="group flex h-full w-full flex-col overflow-hidden rounded-2xl border border-neutral-200/80 bg-white shadow-sm transition-[box-shadow,transform] duration-300 hover:-translate-y-0.5 hover:shadow-[0_14px_36px_rgba(0,77,103,0.12)]">
+    <article
+      className={`${styles.card} group flex h-full w-full flex-col overflow-hidden rounded-2xl bg-white`}
+    >
       <Link
         href={link}
         className="relative block w-full shrink-0 overflow-hidden bg-neutral-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-300 focus-visible:ring-offset-2"
@@ -111,7 +116,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
       </Link>
 
       <div className="flex flex-1 flex-col gap-1.5 p-4 sm:p-4">
-        <div className="space-y-2">
+        <div className="space-y-2 text-center">
           {isKid && (
             <span className="inline-flex rounded-full bg-brand-50 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-brand-600 ring-1 ring-brand-100">
               Familias
@@ -121,7 +126,7 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
           <h2 className="min-w-0" title={displayTitle}>
             <Link
               href={link}
-              className="block text-lg font-bold leading-tight tracking-tight text-neutral-900 transition-colors duration-300 hover:text-brand-600 focus-visible:outline-none focus-visible:text-brand-600 sm:text-xl"
+              className={styles.titleLink}
               prefetch
               onMouseEnter={prefetchActivity}
               onFocus={prefetchActivity}
@@ -132,25 +137,30 @@ const ActivityCard: React.FC<ActivityCardProps> = ({
         </div>
 
         {!inHome && des && (
-          <p className="line-clamp-2 text-sm leading-relaxed text-neutral-500">
+          <p className="line-clamp-2 text-center text-sm leading-relaxed text-neutral-500">
             {des}
           </p>
         )}
 
         <div className={styles.metaSection}>
-          <div className={styles.metaRow}>
-            <span className={styles.metaLabel}>Nivel</span>
-            <span className={styles.metaValue}>{level}</span>
-          </div>
+          <div className={styles.metaGrid}>
+            <div className={styles.metaItem}>
+              <FaSignal className={styles.metaIcon} aria-hidden />
+              <span className={styles.metaLabel}>Nivel</span>
+              <span className={styles.metaValue}>{level}</span>
+            </div>
 
-          <div className={styles.metaRow}>
-            <span className={styles.metaLabel}>Edad</span>
-            <span className={styles.metaValue}>{formattedAge}</span>
-          </div>
+            <div className={styles.metaItem}>
+              <RiUser3Fill className={styles.metaIcon} aria-hidden />
+              <span className={styles.metaLabel}>Edad</span>
+              <span className={styles.metaValue}>{formattedAge}</span>
+            </div>
 
-          <div className={styles.metaRow}>
-            <span className={styles.metaLabel}>Duración</span>
-            <span className={styles.metaValue}>{formattedDuration}</span>
+            <div className={styles.metaItem}>
+              <BsClockFill className={styles.metaIcon} aria-hidden />
+              <span className={styles.metaLabel}>Duración</span>
+              <span className={styles.metaValue}>{formattedDuration}</span>
+            </div>
           </div>
 
           <div className={styles.priceRow}>
