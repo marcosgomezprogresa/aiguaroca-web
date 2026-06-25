@@ -30,12 +30,13 @@ const GridImage: React.FC<GridImageProps> = ({
         quality={90}
         unoptimized={image.startsWith("/api/v1/assets/")}
       />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black/55 via-black/15 to-transparent transition-opacity duration-500 group-hover:from-black/65" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-black/35 via-black/8 to-transparent transition-opacity duration-500 group-hover:from-black/45" />
 
       <div className="absolute inset-0 flex items-end text-white p-3 lg:p-6 relative z-10">
         <div className="align-center gap-2">
-          {/*<div className="flex items-center justify-center w-5 h-5 lg:w-6 lg:h-6 flex-none">{icon}</div>*/}
-          <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold italic uppercase leading-tight drop-shadow-[0_3px_5px_rgba(0,0,0,0.85)]">{name}</h3>
+          <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold italic uppercase leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+            {name}
+          </h3>
         </div>
       </div>
     </Link>
