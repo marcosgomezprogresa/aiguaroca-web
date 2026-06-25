@@ -1,8 +1,9 @@
+/* Paleta sólida y seria — coherente borde, iconos y precio */
 .card {
-  border: 2px solid rgba(0, 100, 140, 0.52);
+  border: 1.5px solid #5a7082;
   box-shadow:
-    0 4px 12px rgba(0, 45, 70, 0.14),
-    0 16px 36px rgba(0, 77, 103, 0.22);
+    0 6px 18px rgba(30, 45, 58, 0.14),
+    0 22px 48px rgba(30, 45, 58, 0.16);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -11,26 +12,25 @@
 
 .card:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 100, 140, 0.68);
+  border-color: #4a6275;
   box-shadow:
-    0 8px 20px rgba(0, 45, 70, 0.16),
-    0 22px 48px rgba(0, 77, 103, 0.26);
+    0 10px 26px rgba(30, 45, 58, 0.18),
+    0 28px 56px rgba(30, 45, 58, 0.2);
 }
 
 @media (min-width: 1024px) {
   .card {
-    border-width: 1.5px;
-    border-color: rgba(0, 77, 103, 0.36);
+    border-color: #627a8c;
     box-shadow:
-      0 3px 10px rgba(0, 45, 70, 0.1),
-      0 14px 32px rgba(0, 77, 103, 0.15);
+      0 5px 14px rgba(30, 45, 58, 0.11),
+      0 18px 40px rgba(30, 45, 58, 0.13);
   }
 
   .card:hover {
-    border-color: rgba(0, 77, 103, 0.5);
+    border-color: #4f6779;
     box-shadow:
-      0 8px 18px rgba(0, 45, 70, 0.12),
-      0 20px 44px rgba(0, 77, 103, 0.2);
+      0 10px 24px rgba(30, 45, 58, 0.15),
+      0 26px 52px rgba(30, 45, 58, 0.18);
   }
 }
 
@@ -47,7 +47,7 @@
 
 .titleLink:hover,
 .titleLink:focus-visible {
-  color: #007bb6;
+  color: #3d5568;
 }
 
 @media (min-width: 640px) {
@@ -84,7 +84,7 @@
   flex-shrink: 0;
   width: 0.85rem;
   height: 0.85rem;
-  color: #007bb6;
+  color: #4a6275;
 }
 
 .metaLabel {
@@ -118,15 +118,14 @@
   gap: 0.1rem;
   padding: 0.4rem 1.15rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, #0077b6 0%, #00a8e8 45%, #00c0fc 100%);
-  box-shadow:
-    0 6px 18px rgba(0, 192, 252, 0.35),
-    inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: #3d5568;
+  box-shadow: 0 5px 14px rgba(30, 45, 58, 0.28);
   color: #ffffff;
   text-decoration: none;
   transition:
     transform 0.28s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow 0.28s cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 0.28s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -147,10 +146,9 @@
 @media (hover: hover) and (pointer: fine) {
   .priceBadge:hover,
   .priceBadge:focus-visible {
-    transform: translateY(-2px) scale(1.03);
-    box-shadow:
-      0 10px 24px rgba(0, 192, 252, 0.45),
-      inset 0 1px 0 rgba(255, 255, 255, 0.3);
+    transform: translateY(-2px);
+    background: #354d5f;
+    box-shadow: 0 8px 20px rgba(30, 45, 58, 0.34);
   }
 }
 
