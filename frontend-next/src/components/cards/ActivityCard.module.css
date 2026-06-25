@@ -2,8 +2,9 @@
 .card {
   border: 1.5px solid #7da3b8;
   box-shadow:
-    0 6px 18px rgba(45, 85, 110, 0.12),
-    0 20px 44px rgba(45, 85, 110, 0.14);
+    0 8px 22px rgba(45, 85, 110, 0.2),
+    0 18px 40px rgba(45, 85, 110, 0.14),
+    0 32px 64px rgba(45, 85, 110, 0.1);
   transition:
     transform 0.3s ease,
     box-shadow 0.3s ease,
@@ -14,23 +15,26 @@
   transform: translateY(-3px);
   border-color: #6b94ab;
   box-shadow:
-    0 10px 26px rgba(45, 85, 110, 0.15),
-    0 26px 52px rgba(45, 85, 110, 0.17);
+    0 12px 28px rgba(45, 85, 110, 0.24),
+    0 24px 48px rgba(45, 85, 110, 0.16),
+    0 36px 72px rgba(45, 85, 110, 0.12);
 }
 
 @media (min-width: 1024px) {
   .card {
     border-color: #89adc0;
     box-shadow:
-      0 5px 14px rgba(45, 85, 110, 0.1),
-      0 18px 40px rgba(45, 85, 110, 0.12);
+      0 6px 18px rgba(45, 85, 110, 0.16),
+      0 16px 36px rgba(45, 85, 110, 0.12),
+      0 28px 56px rgba(45, 85, 110, 0.08);
   }
 
   .card:hover {
     border-color: #7199b0;
     box-shadow:
-      0 10px 24px rgba(45, 85, 110, 0.13),
-      0 24px 48px rgba(45, 85, 110, 0.15);
+      0 10px 26px rgba(45, 85, 110, 0.2),
+      0 22px 44px rgba(45, 85, 110, 0.14),
+      0 34px 64px rgba(45, 85, 110, 0.1);
   }
 }
 
