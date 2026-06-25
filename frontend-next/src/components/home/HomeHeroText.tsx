@@ -5,16 +5,23 @@ import Heading from "../ui/Heading";
 interface HomeHeroTextProps {
   className?: string;
   align?: "center" | "left";
+  hideEyebrow?: boolean;
 }
 
-const HomeHeroText = ({ className = "", align = "left" }: HomeHeroTextProps) => {
+const HomeHeroText = ({
+  className = "",
+  align = "left",
+  hideEyebrow = false,
+}: HomeHeroTextProps) => {
   const alignClass = align === "center" ? "text-center" : "text-left";
 
   return (
     <div className={`w-full space-y-5 ${alignClass} ${className}`}>
-      <h1 className="text-sm sm:text-base font-black uppercase tracking-[0.3em] text-black">
-        Aventura Valencia
-      </h1>
+      {!hideEyebrow && (
+        <h1 className="text-sm sm:text-base font-black uppercase tracking-[0.3em] text-black">
+          Aventura Valencia
+        </h1>
+      )}
 
       <Heading
         level={2}
