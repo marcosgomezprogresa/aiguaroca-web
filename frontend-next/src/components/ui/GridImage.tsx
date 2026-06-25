@@ -27,9 +27,10 @@ const GridImage: React.FC<GridImageProps> = ({
         sizes="(max-width: 640px) 90vw, (max-width: 768px) 50vw, (max-width: 1200px) 40vw, 33vw"
         className="object-cover transition-transform duration-500 group-hover:scale-105"
         loading="lazy"
-        quality={50}
+        quality={90}
+        unoptimized={image.startsWith("/api/v1/assets/")}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/12 to-transparent transition-opacity duration-500 group-hover:from-black/80" />
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[38%] bg-gradient-to-t from-black/55 via-black/15 to-transparent transition-opacity duration-500 group-hover:from-black/65" />
 
       <div className="absolute inset-0 flex items-end text-white p-3 lg:p-6 relative z-10">
         <div className="align-center gap-2">
