@@ -15,7 +15,7 @@ const HomeGridGallery = () => {
     </div>
 
 
-    <div className="custom-container h-auto lg:h-[85dvh] 2xl:h-[680px] grid grid-cols-1 lg:grid-cols-12 gap-3 lg:gap-5 my-10">
+    <div className="custom-container h-auto lg:h-[85dvh] 2xl:h-[680px] grid grid-cols-1 lg:grid-cols-12 gap-x-3 gap-y-6 lg:gap-x-5 lg:gap-y-6 my-10">
       {/* Row 1 */}
       <GridImage
         name="Aventura para empresas"

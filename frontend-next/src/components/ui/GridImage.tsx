@@ -18,7 +18,7 @@ const GridImage: React.FC<GridImageProps> = ({
   return (
     <Link
       href={link}
-      className={`block w-full rounded-lg rounded-lg relative overflow-hidden group ${className}`}
+      className={`group relative block w-full overflow-hidden rounded-xl shadow-[0_10px_30px_rgba(15,23,42,0.16)] ring-1 ring-black/10 transition-shadow duration-300 hover:shadow-[0_16px_38px_rgba(15,23,42,0.22)] ${className}`}
     >
       <Image
         src={image}
@@ -30,11 +30,16 @@ const GridImage: React.FC<GridImageProps> = ({
         quality={90}
         unoptimized={image.startsWith("/api/v1/assets/")}
       />
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-[28%] bg-gradient-to-t from-black/35 via-black/8 to-transparent transition-opacity duration-500 group-hover:from-black/45" />
 
-      <div className="absolute inset-0 flex items-end text-white p-3 lg:p-6 relative z-10">
-        <div className="align-center gap-2">
-          <h3 className="text-base sm:text-lg lg:text-xl xl:text-2xl font-semibold italic uppercase leading-tight drop-shadow-[0_2px_6px_rgba(0,0,0,0.9)]">
+      <div className="absolute inset-0 z-10 flex items-center justify-center p-4 text-center text-white lg:p-6">
+        <div className="max-w-[90%]">
+          <h3
+            className="text-base font-bold italic uppercase leading-tight sm:text-lg lg:text-xl xl:text-2xl"
+            style={{
+              WebkitTextStroke: "1px rgba(0, 0, 0, 0.9)",
+              textShadow: "0 2px 8px rgba(0, 0, 0, 0.65)",
+            }}
+          >
             {name}
           </h3>
         </div>
